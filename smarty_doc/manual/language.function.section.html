@@ -1,0 +1,776 @@
+<HTML
+><HEAD
+><TITLE
+>section,sectionelse</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+"><LINK
+REL="HOME"
+TITLE="Smarty - the compiling PHP template engine"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Built-in Functions"
+HREF="language.builtin.functions.html"><LINK
+REL="PREVIOUS"
+TITLE="php"
+HREF="language.function.php.html"><LINK
+REL="NEXT"
+TITLE="index"
+HREF="section.property.index.html"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Smarty - the compiling PHP template engine</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="language.function.php.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 7. Built-in Functions</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="section.property.index.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="LANGUAGE.FUNCTION.SECTION"
+>section,sectionelse</A
+></H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="section.property.index.html"
+>index</A
+></DT
+><DT
+><A
+HREF="section.property.index.prev.html"
+>index_prev</A
+></DT
+><DT
+><A
+HREF="section.property.index.next.html"
+>index_next</A
+></DT
+><DT
+><A
+HREF="section.property.iteration.html"
+>iteration</A
+></DT
+><DT
+><A
+HREF="section.property.first.html"
+>first</A
+></DT
+><DT
+><A
+HREF="section.property.last.html"
+>last</A
+></DT
+><DT
+><A
+HREF="section.property.rownum.html"
+>rownum</A
+></DT
+><DT
+><A
+HREF="section.property.loop.html"
+>loop</A
+></DT
+><DT
+><A
+HREF="section.property.show.html"
+>show</A
+></DT
+><DT
+><A
+HREF="section.property.total.html"
+>total</A
+></DT
+></DL
+></DIV
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN1045"
+></A
+><P
+></P
+><TABLE
+BORDER="1"
+CLASS="CALSTABLE"
+><THEAD
+><TR
+><TH
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>Attribute Name</TH
+><TH
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>Type</TH
+><TH
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>Required</TH
+><TH
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>Default</TH
+><TH
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Description</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>name</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>string</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>Yes</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+><I
+CLASS="EMPHASIS"
+>n/a</I
+></TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>The name of the section</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>loop</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>[$variable_name]</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>Yes</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+><I
+CLASS="EMPHASIS"
+>n/a</I
+></TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>The name of the variable to determine # of loop
+                        iterations</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>start</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>integer</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>No</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+><I
+CLASS="EMPHASIS"
+>0</I
+></TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>The index
+						position that the section will begin looping. If the
+						value is negative, the start position is calculated
+						from the end of the array. For example, if there are
+						seven values in the loop array and start is -2, the
+						start index is 5. Invalid values (values outside of the
+						length of the loop array) are automatically truncated
+						to the closest valid value.</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>step</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>integer</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>No</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+><I
+CLASS="EMPHASIS"
+>1</I
+></TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>The step value that will be used to traverse the
+						loop array. For example, step=2 will loop on index
+						0,2,4, etc. If step is negative, it will step through
+						the array backwards.</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>max</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>integer</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>No</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+><I
+CLASS="EMPHASIS"
+>1</I
+></TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Sets the maximum number of times the section
+						will loop.</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>show</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>boolean</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>No</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+><I
+CLASS="EMPHASIS"
+>true</I
+></TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>determines whether or not to show this section</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+><P
+>            Template sections are used for looping over arrays of data. All
+            <I
+CLASS="EMPHASIS"
+>section</I
+> tags must be paired with
+            <I
+CLASS="EMPHASIS"
+>/section</I
+> tags. Required parameters are
+            <I
+CLASS="EMPHASIS"
+>name</I
+> and <I
+CLASS="EMPHASIS"
+>loop</I
+>. The name
+            of the section can be anything you like, made up of letters,
+            numbers and underscores. Sections can be nested, and the nested
+            section names must be unique from each other. The loop variable
+            (usually an array of values) determines the number of times the
+            section will loop. When printing a variable within a section, the
+            section name must be given next to variable name within brackets
+            []. <I
+CLASS="EMPHASIS"
+>sectionelse</I
+> is
+            executed when there are no values in the loop variable.
+			</P
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN1108"
+></A
+><P
+><B
+>Example 7-15. section</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&#13;{* this example will print out all the values of the $custid array *}
+{section name=customer loop=$custid}
+	id: {$custid[customer]}&lt;br&gt;
+{/section}
+
+OUTPUT:
+
+id: 1000&lt;br&gt;
+id: 1001&lt;br&gt;
+id: 1002&lt;br&gt;</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN1111"
+></A
+><P
+><B
+>Example 7-16. section loop variable</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>{* the loop variable only determines the number of times to loop.
+   you can access any variable from the template within the section.
+   This example assumes that $custid, $name and $address are all
+   arrays containing the same number of values *}
+{section name=customer loop=$custid}
+	id: {$custid[customer]}&lt;br&gt;
+	name: {$name[customer]}&lt;br&gt;
+	address: {$address[customer]}&lt;br&gt;
+	&lt;p&gt;
+{/section}
+
+
+OUTPUT:
+
+id: 1000&lt;br&gt;
+name: John Smith&lt;br&gt;
+address: 253 N 45th&lt;br&gt;
+&lt;p&gt;
+id: 1001&lt;br&gt;
+name: Jack Jones&lt;br&gt;
+address: 417 Mulberry ln&lt;br&gt;
+&lt;p&gt;
+id: 1002&lt;br&gt;
+name: Jane Munson&lt;br&gt;
+address: 5605 apple st&lt;br&gt;
+&lt;p&gt;</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN1114"
+></A
+><P
+><B
+>Example 7-17. section names</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>{* the name of the section can be anything you like,
+   and it is used to reference the data within the section *}
+{section name=mydata loop=$custid}
+	id: {$custid[mydata]}&lt;br&gt;
+	name: {$name[mydata]}&lt;br&gt;
+	address: {$address[mydata]}&lt;br&gt;
+	&lt;p&gt;
+{/section}</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN1117"
+></A
+><P
+><B
+>Example 7-18. nested sections</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>{* sections can be nested as deep as you like. With nested sections,
+   you can access complex data structures, such as multi-dimensional
+   arrays. In this example, $contact_type[customer] is an array of
+   contact types for the current customer. *}
+{section name=customer loop=$custid}
+	id: {$custid[customer]}&lt;br&gt;
+	name: {$name[customer]}&lt;br&gt;
+	address: {$address[customer]}&lt;br&gt;
+	{section name=contact loop=$contact_type[customer]}
+		{$contact_type[customer][contact]}: {$contact_info[customer][contact]}&lt;br&gt;
+	{/section}
+	&lt;p&gt;
+{/section}
+
+
+OUTPUT:
+
+id: 1000&lt;br&gt;
+name: John Smith&lt;br&gt;
+address: 253 N 45th&lt;br&gt;
+home phone: 555-555-5555&lt;br&gt;
+cell phone: 555-555-5555&lt;br&gt;
+e-mail: john@mydomain.com&lt;br&gt;
+&lt;p&gt;
+id: 1001&lt;br&gt;
+name: Jack Jones&lt;br&gt;
+address: 417 Mulberry ln&lt;br&gt;
+home phone: 555-555-5555&lt;br&gt;
+cell phone: 555-555-5555&lt;br&gt;
+e-mail: jack@mydomain.com&lt;br&gt;
+&lt;p&gt;
+id: 1002&lt;br&gt;
+name: Jane Munson&lt;br&gt;
+address: 5605 apple st&lt;br&gt;
+home phone: 555-555-5555&lt;br&gt;
+cell phone: 555-555-5555&lt;br&gt;
+e-mail: jane@mydomain.com&lt;br&gt;
+&lt;p&gt;</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN1120"
+></A
+><P
+><B
+>Example 7-19. sections and associative arrays</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>{* This is an example of printing an associative array
+   of data within a section *}
+{section name=customer loop=$contacts}
+	name: {$contacts[customer].name}&lt;br&gt;
+	home: {$contacts[customer].home}&lt;br&gt;
+	cell: {$contacts[customer].cell}&lt;br&gt;
+	e-mail: {$contacts[customer].email}&lt;p&gt;
+{/section}
+
+
+OUTPUT:
+
+name: John Smith&lt;br&gt;
+home: 555-555-5555&lt;br&gt;
+cell: 555-555-5555&lt;br&gt;
+e-mail: john@mydomain.com&lt;p&gt;
+name: Jack Jones&lt;br&gt;
+home phone: 555-555-5555&lt;br&gt;
+cell phone: 555-555-5555&lt;br&gt;
+e-mail: jack@mydomain.com&lt;p&gt;
+name: Jane Munson&lt;br&gt;
+home phone: 555-555-5555&lt;br&gt;
+cell phone: 555-555-5555&lt;br&gt;
+e-mail: jane@mydomain.com&lt;p&gt;</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN1123"
+></A
+><P
+><B
+>Example 7-20. sectionelse</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>{* sectionelse will execute if there are no $custid values *}
+{section name=customer loop=$custid}
+	id: {$custid[customer]}&lt;br&gt;
+{sectionelse}
+	there are no values in $custid.
+{/section}</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+><P
+>		Sections also have their own variables that handle section properties.
+		These are indicated like so: {$smarty.section.sectionname.varname}
+		</P
+><P
+>		NOTE: As of Smarty 1.5.0, the syntax for section property variables has
+		been changed from {%sectionname.varname%} to
+		{$smarty.section.sectionname.varname}. The old syntax is still
+		supported, but you will only see reference to the new syntax in the
+		manual examples.
+		</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="language.function.php.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="section.property.index.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>php</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="language.builtin.functions.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>index</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

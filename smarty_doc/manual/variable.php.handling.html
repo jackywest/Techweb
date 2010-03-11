@@ -1,0 +1,180 @@
+<HTML
+><HEAD
+><TITLE
+>$php_handling</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+"><LINK
+REL="HOME"
+TITLE="Smarty - the compiling PHP template engine"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Variables"
+HREF="api.variables.html"><LINK
+REL="PREVIOUS"
+TITLE="$default_template_handler_func"
+HREF="variable.default.template.handler.func.html"><LINK
+REL="NEXT"
+TITLE="$security"
+HREF="variable.security.html"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Smarty - the compiling PHP template engine</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="variable.default.template.handler.func.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 12. Variables</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="variable.security.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="VARIABLE.PHP.HANDLING"
+>$php_handling</A
+></H1
+><P
+>       This tells Smarty how to handle PHP code embedded in the
+       templates. There are four possible settings, default being
+       SMARTY_PHP_PASSTHRU. Note that this does NOT affect php code
+       within <A
+HREF="language.function.php.html"
+>{php}{/php}</A
+>
+       tags in the template.
+      </P
+><P
+></P
+><UL
+><LI
+><P
+>SMARTY_PHP_PASSTHRU - Smarty echos tags as-is.</P
+></LI
+><LI
+><P
+>SMARTY_PHP_QUOTE - Smarty quotes the tags as
+         html entities.</P
+></LI
+><LI
+><P
+>SMARTY_PHP_REMOVE - Smarty removes the tags from
+         the templates.</P
+></LI
+><LI
+><P
+>SMARTY_PHP_ALLOW - Smarty will execute the tags
+         as PHP code.</P
+></LI
+></UL
+><P
+>       NOTE: Embedding PHP code into templates is highly discouraged.
+       Use <A
+HREF="language.custom.functions.html"
+>custom functions</A
+> or
+       <A
+HREF="language.modifiers.html"
+>modifiers</A
+> instead.
+      </P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="variable.default.template.handler.func.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="variable.security.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>$default_template_handler_func</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="api.variables.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>$security</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

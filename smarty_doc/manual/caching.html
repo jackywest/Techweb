@@ -1,0 +1,502 @@
+<HTML
+><HEAD
+><TITLE
+>Caching</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+"><LINK
+REL="HOME"
+TITLE="Smarty - the compiling PHP template engine"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Smarty For Programmers"
+HREF="smarty.for.programmers.html"><LINK
+REL="PREVIOUS"
+TITLE="unregister_resource"
+HREF="api.unregister.resource.html"><LINK
+REL="NEXT"
+TITLE="Multiple Caches Per Page"
+HREF="caching.multiple.caches.html"></HEAD
+><BODY
+CLASS="CHAPTER"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Smarty - the compiling PHP template engine</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="api.unregister.resource.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="caching.multiple.caches.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="CHAPTER"
+><H1
+><A
+NAME="CACHING"
+>Chapter 14. Caching</A
+></H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="caching.html#CACHING.SETTING.UP"
+>Setting Up Caching</A
+></DT
+><DT
+><A
+HREF="caching.multiple.caches.html"
+>Multiple Caches Per Page</A
+></DT
+><DT
+><A
+HREF="caching.groups.html"
+>Cache Groups</A
+></DT
+></DL
+></DIV
+><P
+>   Caching is used to speed up a call to <A
+HREF="api.display.html"
+>display()</A
+> or <A
+HREF="api.fetch.html"
+>fetch()</A
+> by saving its output to a file. If a
+   cached version of the call is available, that is displayed instead of
+   regenerating the output. Caching can speed things up tremendously,
+   especially templates with longer computation times. Since the output of
+   display() or fetch() is cached, one cache file could conceivably be made up
+   of several template files, config files, etc.
+   </P
+><P
+>   Since templates are dynamic, it is important to be careful what you are
+   caching and for how long. For instance, if you are displaying the front page
+   of your website that does not change its content very often, it might work
+   well to cache this page for an hour or more. On the other hand, if you are
+   displaying a page with a weather map containing new information by the
+   minute, it would not make sense to cache this page.
+   </P
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="CACHING.SETTING.UP"
+>Setting Up Caching</A
+></H1
+><P
+>   The first thing to do is enable caching. This is done by setting <A
+HREF="variable.caching.html"
+>$caching</A
+> = true (or 1.)     
+   </P
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN3450"
+></A
+><P
+><B
+>Example 14-1. enabling caching</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>require('Smarty.class.php');
+$smarty = new Smarty;
+
+$smarty-&#62;caching = true;
+
+$smarty-&#62;display('index.tpl');</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+><P
+>	With caching enabled, the function call to display('index.tpl') will render
+	the template as usual, but also saves a copy of its output to a file (a
+	cached copy) in the <A
+HREF="variable.cache.dir.html"
+>$cache_dir</A
+>.
+	Upon the next call to display('index.tpl'), the cached copy will be used
+	instead of rendering the template again.
+	</P
+><DIV
+CLASS="NOTE"
+><BLOCKQUOTE
+CLASS="NOTE"
+><P
+><B
+>Technical Note: </B
+>	The files in the $cache_dir are named similar to the template name.
+	Although they end in the ".php" extention, they are not really executable
+	php scripts. Do not edit these files!
+	</P
+></BLOCKQUOTE
+></DIV
+><P
+>	Each cached page has a limited lifetime determined by <A
+HREF="variable.cache.lifetime.html"
+>$cache_lifetime</A
+>. The default value
+	is 3600 seconds, or 1 hour. After that time expires, the cache is
+	regenerated. It is possible to give individual caches their own expiration
+	time by setting $caching = 2. See the documentation on <A
+HREF="variable.cache.lifetime.html"
+>$cache_lifetime</A
+> for details.
+	</P
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN3461"
+></A
+><P
+><B
+>Example 14-2. setting cache_lifetime per cache</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>require('Smarty.class.php');
+$smarty = new Smarty;
+
+$smarty-&#62;caching = 2; // lifetime is per cache
+
+// set the cache_lifetime for index.tpl to 15 minutes
+$smarty-&#62;cache_lifetime = 300;
+$smarty-&#62;display('index.tpl');
+
+// set the cache_lifetime for home.tpl to 1 hour
+$smarty-&#62;cache_lifetime = 3600;
+$smarty-&#62;display('home.tpl');
+
+// NOTE: the following $cache_lifetime setting will not work when $caching = 2.
+// The cache lifetime for home.tpl has already been set
+// to 1 hour, and will no longer respect the value of $cache_lifetime.
+// The home.tpl cache will still expire after 1 hour.
+$smarty-&#62;cache_lifetime = 30; // 30 seconds
+$smarty-&#62;display('home.tpl');</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+><P
+>	If <A
+HREF="variable.compile.check.html"
+>$compile_check</A
+> is enabled,
+	every template file and config file that is involved with the cache file is
+	checked for modification. If any of the files have been modified since the
+	cache was generated, the cache is immediately regenerated. This is a slight
+	overhead so for optimum performance, leave $compile_check set to false.
+	</P
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN3466"
+></A
+><P
+><B
+>Example 14-3. enabling $compile_check</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>require('Smarty.class.php');
+$smarty = new Smarty;
+
+$smarty-&#62;caching = true;
+$smarty-&#62;compile_check = true;
+
+$smarty-&#62;display('index.tpl');</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+><P
+>	If <A
+HREF="variable.force.compile.html"
+>$force_compile</A
+> is enabled,
+	the cache files will always be regenerated. This effectively turns off
+	caching. $force_compile is usually for debugging purposes only, a more
+	efficient way of disabling caching is to set <A
+HREF="variable.caching.html"
+>$caching</A
+> = false (or 0.)
+	</P
+><P
+>	The <A
+HREF="api.is.cached.html"
+>is_cached()</A
+> function
+	can be used to test if a template has a valid cache or not. If you have a
+	cached template that requires something like a database fetch, you can use
+	this to skip that process.
+	</P
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN3474"
+></A
+><P
+><B
+>Example 14-4. using is_cached()</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>require('Smarty.class.php');
+$smarty = new Smarty;
+
+$smarty-&#62;caching = true;
+
+if(!$smarty-&#62;is_cached('index.tpl')) {
+	// No cache available, do variable assignments here.
+	$contents = get_database_contents();
+	$smarty-&#62;assign($contents);
+}
+
+$smarty-&#62;display('index.tpl');</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+><P
+>	You can keep parts of a page dynamic with the <A
+HREF="language.function.insert.html"
+>insert</A
+> template function. Let's
+	say the whole page can be cached except for a banner that is displayed down
+	the right side of the page. By using an insert function for the banner, you
+	can keep this element dynamic within the cached content. See the
+	documentation on <A
+HREF="language.function.insert.html"
+>insert</A
+> for
+	details and examples.
+	</P
+><P
+>	You can clear all the cache files with the <A
+HREF="api.clear.all.cache.html"
+>clear_all_cache()</A
+> function, or
+	individual cache files (or groups) with the <A
+HREF="api.clear.cache.html"
+>clear_cache()</A
+> function.	
+	</P
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN3483"
+></A
+><P
+><B
+>Example 14-5. clearing the cache</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>require('Smarty.class.php');
+$smarty = new Smarty;
+
+$smarty-&#62;caching = true;
+
+// clear out all cache files
+$smarty-&#62;clear_all_cache();
+
+// clear only cache for index.tpl
+$smarty-&#62;clear_cache('index.tpl');
+
+$smarty-&#62;display('index.tpl');</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="api.unregister.resource.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="caching.multiple.caches.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>unregister_resource</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="smarty.for.programmers.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Multiple Caches Per Page</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,255 @@
+<HTML
+><HEAD
+><TITLE
+>Troubleshooting</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+"><LINK
+REL="HOME"
+TITLE="Smarty - the compiling PHP template engine"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Appendixes"
+HREF="appendixes.html"><LINK
+REL="PREVIOUS"
+TITLE="Appendixes"
+HREF="appendixes.html"><LINK
+REL="NEXT"
+TITLE="Tips & Tricks"
+HREF="tips.html"></HEAD
+><BODY
+CLASS="CHAPTER"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Smarty - the compiling PHP template engine</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="appendixes.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="tips.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="CHAPTER"
+><H1
+><A
+NAME="TROUBLESHOOTING"
+>Chapter 17. Troubleshooting</A
+></H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="troubleshooting.html#SMARTY.PHP.ERRORS"
+>Smarty/PHP errors</A
+></DT
+></DL
+></DIV
+><P
+></P
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="SMARTY.PHP.ERRORS"
+>Smarty/PHP errors</A
+></H1
+><P
+>       Smarty can catch many errors such as missing tag attributes
+       or malformed variable names. If this happens, you will see an error
+       similar to the following:
+       </P
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN3932"
+></A
+><P
+><B
+>Example 17-1. Smarty errors</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>Warning: Smarty: [in index.tpl line 4]: syntax error: unknown tag - '%blah'
+        in /path/to/smarty/Smarty.class.php on line 1041
+
+Fatal error: Smarty: [in index.tpl line 28]: syntax error: missing section name
+        in /path/to/smarty/Smarty.class.php on line 1041</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+><P
+>        Smarty shows you the template name, the line number and the error.
+        After that, the error consists of the actual line number in the Smarty
+        class that the error occured.
+       </P
+><P
+>        There are certain errors that Smarty cannot catch, such as missing
+        close tags. These types of errors usually end up in PHP compile-time
+        parsing errors.
+       </P
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN3937"
+></A
+><P
+><B
+>Example 17-2. PHP parsing errors</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>Parse error: parse error in /path/to/smarty/templates_c/index.tpl.php on line 75</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+><P
+>        When you encounter a PHP parsing error, the error line number will
+        correspond to the compiled PHP script, not the template itself. Usually
+        you can look at the template and spot the syntax error. Here are some
+        common things to look for: missing close tags for {if}{/if} or
+        {section}{/section}, or syntax of logic within an {if} tag. If you
+        can't find the error, you might have to open the compiled PHP file and
+        go to the line number to figure out where the corresponding error is in
+        the template.
+       </P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="appendixes.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="tips.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Appendixes</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="appendixes.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Tips &#38; Tricks</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

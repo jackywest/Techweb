@@ -1,0 +1,211 @@
+<HTML
+><HEAD
+><TITLE
+>Output Filters</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+"><LINK
+REL="HOME"
+TITLE="Smarty - the compiling PHP template engine"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Advanced Features"
+HREF="advanced.features.html"><LINK
+REL="PREVIOUS"
+TITLE="Postfilters"
+HREF="advanced.features.postfilters.html"><LINK
+REL="NEXT"
+TITLE="Cache Handler Function"
+HREF="section.template.cache.handler.func.html"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Smarty - the compiling PHP template engine</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="advanced.features.postfilters.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 15. Advanced Features</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="section.template.cache.handler.func.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="ADVANCED.FEATURES.OUTPUTFILTERS"
+>Output Filters</A
+></H1
+><P
+>    When the template is invoked via display() or fetch(), its output can be
+    sent through one or more output filters. This differs from postfilters
+    because postfilters operate on compiled templates before they are saved to
+    the disk, and output filters operate on the template output when it is
+    executed.
+   </P
+><P
+>    Output filters can be either 
+    <A
+HREF="api.register.outputfilter.html"
+>registered</A
+> or loaded
+    from the plugins directory by using
+    <A
+HREF="api.load.filter.html"
+>load_filter()</A
+> function or by
+    setting
+    <A
+HREF="variable.autoload.filters.html"
+>$autoload_filters</A
+>
+    variable. Smarty will pass the template output as the first argument,
+    and expect the function to return the result of the processing.
+   </P
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN3552"
+></A
+><P
+><B
+>Example 15-4. using a template outputfilter</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&lt;?php
+// put this in your application
+function protect_email($tpl_output, &#38;$smarty)
+{
+    $tpl_output =
+       preg_replace('!(\S+)@([a-zA-Z0-9\.\-]+\.([a-zA-Z]{2,3}|[0-9]{1,3}))!',
+                    '$1%40$2', $tpl_output);
+    return $tpl_output;
+}
+
+// register the outputfilter
+$smarty-&#62;register_outputfilter("protect_email");
+$smarty-&#62;display("index.tpl");
+
+// now any occurrence of an email address in the template output will have
+// a simple protection against spambots
+?&gt;</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="advanced.features.postfilters.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="section.template.cache.handler.func.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Postfilters</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="advanced.features.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Cache Handler Function</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

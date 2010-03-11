@@ -1,0 +1,11 @@
+<?php
+require 'smarty/libs/Smarty.class.php';
+
+$smarty = new Smarty;
+
+$smarty->assign('title','Hello World');
+$smarty->assign('hello','Hello world this is a test with smarty');
+$smarty->assign('menu_content','this is the menu');
+$smarty->display('header.tpl');
+$smarty->display('left_menu.tpl');
+?>

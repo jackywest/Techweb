@@ -1,0 +1,185 @@
+<HTML
+><HEAD
+><TITLE
+>Embedding Vars in Double Quotes</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+"><LINK
+REL="HOME"
+TITLE="Smarty - the compiling PHP template engine"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Basic Syntax"
+HREF="language.basic.syntax.html"><LINK
+REL="PREVIOUS"
+TITLE="Attributes"
+HREF="language.syntax.attributes.html"><LINK
+REL="NEXT"
+TITLE="Variables"
+HREF="language.variables.html"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Smarty - the compiling PHP template engine</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="language.syntax.attributes.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 3. Basic Syntax</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="language.variables.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="LANGUAGE.SYNTAX.QUOTES"
+>Embedding Vars in Double Quotes</A
+></H1
+><P
+>	Smarty will recognize assigned variables embedded in double quotes so long
+	as the variables contain only numbers, letters, underscores and brackets
+	[]. With any other characters (period, object reference, etc.) the variable
+	must be surrounded by backticks.
+    </P
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN190"
+></A
+><P
+><B
+>Example 3-4. embedded quotes syntax</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>SYNTAX EXAMPLES:
+{func var="test $foo test"}       &lt;-- sees $foo
+{func var="test $foo_bar test"}   &lt;-- sees $foo_bar
+{func var="test $foo[0] test"}    &lt;-- sees $foo[0]
+{func var="test $foo[bar] test"}  &lt;-- sees $foo[bar]
+{func var="test $foo.bar test"}   &lt;-- sees $foo (not $foo.bar)
+{func var="test `$foo.bar` test"} &lt;-- sees $foo.bar
+
+PRACTICAL EXAMPLES:
+{include file="subdir/$tpl_name.tpl"} &lt;-- will replace $tpl_name with value
+{cycle values="one,two,`$smarty.config.myval`"} &lt;-- must have backticks</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="language.syntax.attributes.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="language.variables.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Attributes</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="language.basic.syntax.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Variables</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

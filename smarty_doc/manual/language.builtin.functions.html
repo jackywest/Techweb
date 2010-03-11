@@ -1,0 +1,327 @@
+<HTML
+><HEAD
+><TITLE
+>Built-in Functions</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+"><LINK
+REL="HOME"
+TITLE="Smarty - the compiling PHP template engine"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Smarty For Template Designers"
+HREF="smarty.for.designers.html"><LINK
+REL="PREVIOUS"
+TITLE="Combining Modifiers"
+HREF="language.combining.modifiers.html"><LINK
+REL="NEXT"
+TITLE="config_load"
+HREF="language.function.config.load.html"></HEAD
+><BODY
+CLASS="CHAPTER"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Smarty - the compiling PHP template engine</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="language.combining.modifiers.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="language.function.config.load.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="CHAPTER"
+><H1
+><A
+NAME="LANGUAGE.BUILTIN.FUNCTIONS"
+>Chapter 7. Built-in Functions</A
+></H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="language.builtin.functions.html#LANGUAGE.FUNCTION.CAPTURE"
+>capture</A
+></DT
+><DT
+><A
+HREF="language.function.config.load.html"
+>config_load</A
+></DT
+><DT
+><A
+HREF="language.function.foreach.html"
+>foreach,foreachelse</A
+></DT
+><DT
+><A
+HREF="language.function.include.html"
+>include</A
+></DT
+><DT
+><A
+HREF="language.function.include.php.html"
+>include_php</A
+></DT
+><DT
+><A
+HREF="language.function.insert.html"
+>insert</A
+></DT
+><DT
+><A
+HREF="language.function.if.html"
+>if,elseif,else</A
+></DT
+><DT
+><A
+HREF="language.function.ldelim.html"
+>ldelim,rdelim</A
+></DT
+><DT
+><A
+HREF="language.function.literal.html"
+>literal</A
+></DT
+><DT
+><A
+HREF="language.function.php.html"
+>php</A
+></DT
+><DT
+><A
+HREF="language.function.section.html"
+>section,sectionelse</A
+></DT
+><DT
+><A
+HREF="language.function.strip.html"
+>strip</A
+></DT
+></DL
+></DIV
+><P
+>      Smarty comes with several built-in functions. Built-in functions
+      are integral to the template language. You cannot create custom
+      functions with the same names, nor can you modify built-in functions.
+     </P
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="LANGUAGE.FUNCTION.CAPTURE"
+>capture</A
+></H1
+><P
+>       capture is used to collect the output of the template into a
+       variable instead of displaying it. Any content between {capture
+       name="foo"} and {/capture} is collected into the variable specified
+       in the name attribute. The captured content can be used in the
+       template from the special variable $smarty.capture.foo where foo is
+       the value passed in the name attribute. If you do not supply a name
+       attribute, then "default" will be used. All {capture} commands must
+       be paired with {/capture}. You can nest capture commands.
+      </P
+><DIV
+CLASS="NOTE"
+><BLOCKQUOTE
+CLASS="NOTE"
+><P
+><B
+>Technical Note: </B
+>       Smarty 1.4.0 - 1.4.4 placed the captured content into the
+       variable named $return. As of 1.4.5, this behavior was changed to use
+       the name attribute, so update your templates accordingly.
+      </P
+></BLOCKQUOTE
+></DIV
+><DIV
+CLASS="CAUTION"
+><P
+></P
+><TABLE
+CLASS="CAUTION"
+BORDER="1"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="CENTER"
+><B
+>Caution</B
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+><P
+>        Be careful when capturing <A
+HREF="language.function.insert.html"
+><B
+CLASS="COMMAND"
+>{insert}</B
+></A
+> output. If
+        you have caching turned on and you have <A
+HREF="language.function.insert.html"
+><B
+CLASS="COMMAND"
+>{insert}</B
+></A
+>
+        commands that you expect to run within cached content, do not
+        capture this content.
+       </P
+></TD
+></TR
+></TABLE
+></DIV
+><P
+>       <TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN725"
+></A
+><P
+><B
+>Example 7-1. capturing template content</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>{* we don't want to print a table row unless content is displayed *}
+{capture name=banner}
+{include file="get_banner.tpl"}
+{/capture}
+{if $smarty.capture.banner ne ""}
+	&lt;tr&gt;
+		&lt;td&gt;
+			{$smarty.capture.banner}
+		&lt;/td&gt;
+	&lt;/tr&gt;
+{/if}</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+>
+      </P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="language.combining.modifiers.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="language.function.config.load.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Combining Modifiers</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="smarty.for.designers.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>config_load</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

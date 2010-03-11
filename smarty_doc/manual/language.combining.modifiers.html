@@ -1,0 +1,197 @@
+<HTML
+><HEAD
+><TITLE
+>Combining Modifiers</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+"><LINK
+REL="HOME"
+TITLE="Smarty - the compiling PHP template engine"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Smarty For Template Designers"
+HREF="smarty.for.designers.html"><LINK
+REL="PREVIOUS"
+TITLE="wordwrap"
+HREF="language.modifier.wordwrap.html"><LINK
+REL="NEXT"
+TITLE="Built-in Functions"
+HREF="language.builtin.functions.html"></HEAD
+><BODY
+CLASS="CHAPTER"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Smarty - the compiling PHP template engine</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="language.modifier.wordwrap.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="language.builtin.functions.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="CHAPTER"
+><H1
+><A
+NAME="LANGUAGE.COMBINING.MODIFIERS"
+>Chapter 6. Combining Modifiers</A
+></H1
+><P
+>		 You can apply any number of modifiers to a variable. They will be
+		 applied in the order they are combined, from left to right. They must
+		 be separated with a <TT
+CLASS="LITERAL"
+>|</TT
+> (pipe) character.
+        </P
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN708"
+></A
+><P
+><B
+>Example 6-1. combining modifiers</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>index.php:
+
+$smarty = new Smarty;
+$smarty-&gt;assign('articleTitle', 'Smokers are Productive, but Death Cuts Efficiency.');
+$smarty-&gt;display('index.tpl');
+
+index.tpl:
+		 
+{$articleTitle}
+{$articleTitle|upper|spacify}
+{$articleTitle|lower|spacify|truncate}
+{$articleTitle|lower|truncate:30|spacify}
+{$articleTitle|lower|spacify|truncate:30:". . ."}
+
+
+OUTPUT:
+
+Smokers are Productive, but Death Cuts Efficiency.
+S M O K E R S   A R E   P R O D U C T I V E ,   B U T   D E A T H   C U T S   E F F I C I E N C Y .
+s m o k e r s   a r e   p r o d u c t i v e ,   b u t   d e a t h   c u t s...
+s m o k e r s   a r e   p r o d u c t i v e ,   b u t . . .
+s m o k e r s   a r e   p. . .</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="language.modifier.wordwrap.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="language.builtin.functions.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>wordwrap</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="smarty.for.designers.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Built-in Functions</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

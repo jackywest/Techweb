@@ -1,0 +1,349 @@
+<HTML
+><HEAD
+><TITLE
+>Template Functions</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+"><LINK
+REL="HOME"
+TITLE="Smarty - the compiling PHP template engine"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Extending Smarty With Plugins"
+HREF="plugins.html"><LINK
+REL="PREVIOUS"
+TITLE="Writing Plugins"
+HREF="plugins.writing.html"><LINK
+REL="NEXT"
+TITLE="Modifiers"
+HREF="plugins.modifiers.html"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Smarty - the compiling PHP template engine</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="plugins.writing.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 16. Extending Smarty With Plugins</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="plugins.modifiers.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="PLUGINS.FUNCTIONS"
+>Template Functions</A
+></H1
+><DIV
+CLASS="FUNCSYNOPSIS"
+><A
+NAME="AEN3685"
+></A
+><P
+></P
+><P
+><CODE
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FUNCTION"
+>smarty_function_<TT
+CLASS="REPLACEABLE"
+><I
+>name</I
+></TT
+></B
+></CODE
+>(array $params, object &#38;$smarty)</CODE
+></P
+><P
+></P
+></DIV
+><P
+>     All attributes passed to template functions from the template are
+     contained in the <TT
+CLASS="PARAMETER"
+><I
+>$params</I
+></TT
+> as an associative
+     array. Either access those values directly, e.g.
+     <TT
+CLASS="VARNAME"
+>$params['start']</TT
+> or use
+     <TT
+CLASS="VARNAME"
+>extract($params)</TT
+> to import them into the symbol
+     table.
+    </P
+><P
+>	 The output (return value) of the function will be substituted in place of the
+     function tag in the template (<B
+CLASS="FUNCTION"
+>fetch()</B
+> function, for
+     example). Alternatively, the function can simply perform some other
+     task without any output (<B
+CLASS="FUNCTION"
+>assign()</B
+> function).
+    </P
+><P
+>     If the function needs to assign some variables to the template or use
+     some other Smarty-provided functionality, it can use the supplied
+     <TT
+CLASS="PARAMETER"
+><I
+>$smarty</I
+></TT
+> object to do so.
+    </P
+><P
+>     See also:
+     <A
+HREF="api.register.function.html"
+>register_function()</A
+>,
+     <A
+HREF="api.unregister.function.html"
+>unregister_function()</A
+>.
+    </P
+><P
+>     <TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN3707"
+></A
+><P
+><B
+>Example 16-1. function plugin with output</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&lt;?php
+/*
+ * Smarty plugin
+ * -------------------------------------------------------------
+ * File:     function.eightball.php
+ * Type:     function
+ * Name:     eightball
+ * Purpose:  outputs a random magic answer
+ * -------------------------------------------------------------
+ */
+function smarty_function_eightball($params, &amp;$smarty)
+{
+    $answers = array('Yes',
+                     'No',
+                     'No way',
+                     'Outlook not so good',
+                     'Ask again soon',
+                     'Maybe in your reality');
+
+    $result = array_rand($answers);
+    return $answers[$result];
+}
+?&gt;</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+>
+    </P
+><P
+>     which can be used in the template as:
+    </P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>Question: Will we ever have time travel?
+Answer: {eightball}.</PRE
+></TD
+></TR
+></TABLE
+><P
+>     <TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN3713"
+></A
+><P
+><B
+>Example 16-2. function plugin without output</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&lt;?php
+/*
+ * Smarty plugin
+ * -------------------------------------------------------------
+ * File:     function.assign.php
+ * Type:     function
+ * Name:     assign
+ * Purpose:  assign a value to a template variable
+ * -------------------------------------------------------------
+ */
+function smarty_function_assign($params, &amp;$smarty)
+{
+    extract($params);
+
+    if (empty($var)) {
+        $smarty-&#62;trigger_error("assign: missing 'var' parameter");
+        return;
+    }
+
+    if (!in_array('value', array_keys($params))) {
+        $smarty-&#62;trigger_error("assign: missing 'value' parameter");
+        return;
+    }
+
+    $smarty-&#62;assign($var, $value);
+}
+?&gt;</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+>
+    </P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="plugins.writing.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="plugins.modifiers.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Writing Plugins</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="plugins.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Modifiers</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

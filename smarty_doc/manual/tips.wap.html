@@ -1,0 +1,213 @@
+<HTML
+><HEAD
+><TITLE
+>WAP/WML</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+"><LINK
+REL="HOME"
+TITLE="Smarty - the compiling PHP template engine"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Tips & Tricks"
+HREF="tips.html"><LINK
+REL="PREVIOUS"
+TITLE="Dates"
+HREF="tips.dates.html"><LINK
+REL="NEXT"
+TITLE="Componentized Templates"
+HREF="tips.componentized.templates.html"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Smarty - the compiling PHP template engine</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="tips.dates.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 18. Tips &#38; Tricks</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="tips.componentized.templates.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="TIPS.WAP"
+>WAP/WML</A
+></H1
+><P
+>        WAP/WML templates require a php Content-Type header to be passed along
+        with the template. The easist way to do this would be to write a custom
+        function that prints the header. If you are using caching, that won't
+        work so we'll do it using the insert tag (remember insert tags are not
+        cached!) Be sure that there is nothing output to the browser before the
+        template, or else the header may fail.
+		</P
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN3981"
+></A
+><P
+><B
+>Example 18-6. using insert to write a WML Content-Type header</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>// be sure apache is configure for the .wml extensions!                                    
+// put this function somewhere in your application, or in Smarty.addons.php
+function insert_header() {
+    // this function expects $content argument
+    extract(func_get_arg(0));
+    if(empty($content))
+        return;
+    header($content);
+    return;
+}
+
+// your Smarty template _must_ begin with the insert tag example:
+
+{insert name=header content="Content-Type: text/vnd.wap.wml"}
+
+&lt;?xml version="1.0"?&gt;  
+&lt;!DOCTYPE wml PUBLIC "-//WAPFORUM//DTD WML 1.1//EN" "http://www.wapforum.org/DTD/wml_1.1.xml"&gt; 
+
+&lt;!-- begin new wml deck --&gt; 
+&lt;wml&gt; 
+&lt;!-- begin first card --&gt; 
+&lt;card&gt; 
+&lt;do type="accept"&gt; 
+&lt;go href="#two"/&gt; 
+&lt;/do&gt;  
+&lt;p&gt; 
+Welcome to WAP with Smarty!
+Press OK to continue...  
+&lt;/p&gt; 
+&lt;/card&gt;  
+&lt;!-- begin second card --&gt; 
+&lt;card id="two"&gt;  
+&lt;p&gt; 
+Pretty easy isn't it?
+&lt;/p&gt; 
+&lt;/card&gt; 
+&lt;/wml&gt;</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="tips.dates.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="tips.componentized.templates.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Dates</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="tips.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Componentized Templates</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

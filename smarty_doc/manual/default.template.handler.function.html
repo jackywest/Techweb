@@ -1,0 +1,196 @@
+<HTML
+><HEAD
+><TITLE
+>Default template handler function</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+"><LINK
+REL="HOME"
+TITLE="Smarty - the compiling PHP template engine"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Resources"
+HREF="template.resources.html"><LINK
+REL="PREVIOUS"
+TITLE="Templates from other sources"
+HREF="templates.from.elsewhere.html"><LINK
+REL="NEXT"
+TITLE="Extending Smarty With Plugins"
+HREF="plugins.html"></HEAD
+><BODY
+CLASS="SECT2"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Smarty - the compiling PHP template engine</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="templates.from.elsewhere.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="plugins.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="DEFAULT.TEMPLATE.HANDLER.FUNCTION"
+>Default template handler function</A
+></H2
+><P
+>     You can specify a function that is used to retrieve template
+     contents in the event the template cannot be retrieved from its
+     resource. One use of this is to create templates that do not exist
+     on-the-fly.
+    </P
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN3598"
+></A
+><P
+><B
+>Example 15-10. using the default template handler function</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&lt;?php
+// put this function somewhere in your application
+
+function make_template ($resource_type, $resource_name, &amp;$template_source, &amp;$template_timestamp, &amp;$smarty_obj)
+{
+	if( $resource_type == 'file' ) {
+		if ( ! is_readable ( $resource_name )) {
+			// create the template file, return contents.
+			$template_source = "This is a new template.";
+			$template_timestamp = time();
+			$smarty_obj-&#62;_write_file($resource_name,$template_source);
+			return true;
+		}
+    } else {
+		// not a file
+		return false;
+    }
+}
+
+// set the default handler
+$smarty-&#62;default_template_handler_func = 'make_template';
+?&gt;</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="templates.from.elsewhere.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="plugins.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Templates from other sources</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="template.resources.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Extending Smarty With Plugins</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

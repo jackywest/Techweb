@@ -1,0 +1,251 @@
+<HTML
+><HEAD
+><TITLE
+>Dates</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+"><LINK
+REL="HOME"
+TITLE="Smarty - the compiling PHP template engine"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Tips & Tricks"
+HREF="tips.html"><LINK
+REL="PREVIOUS"
+TITLE="Passing variable title to header template"
+HREF="tips.passing.vars.html"><LINK
+REL="NEXT"
+TITLE="WAP/WML"
+HREF="tips.wap.html"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Smarty - the compiling PHP template engine</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="tips.passing.vars.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 18. Tips &#38; Tricks</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="tips.wap.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="TIPS.DATES"
+>Dates</A
+></H1
+><P
+>	   As a rule of thumb, always pass dates to Smarty as timestamps. This
+	   allows template designers to use <A
+HREF="language.modifier.date.format.html"
+>date_format</A
+> for full
+	   control over date formatting, and also makes it easy to compare dates if
+	   necessary.
+       </P
+><P
+>       NOTE: As of Smarty 1.4.0, you can pass dates to Smarty as unix
+       timestamps, mysql timestamps, or any date parsable by strtotime().
+       </P
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN3971"
+></A
+><P
+><B
+>Example 18-4. using date_format</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>{$startDate|date_format}
+
+OUTPUT:
+
+Jan 4, 2001
+
+
+{$startDate|date_format:"%Y/%m/%d"}
+
+OUTPUT:
+
+2001/01/04
+
+
+{if $date1 &#60; $date2}
+	...
+{/if}</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+><P
+>        When using {html_select_date} in a template, The programmer will most
+        likely want to convert the output from the form back into timestamp
+        format. Here is a function to help you with that.
+		</P
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN3975"
+></A
+><P
+><B
+>Example 18-5. converting form date elements back to a timestamp</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>// this assumes your form elements are named
+// startDate_Day, startDate_Month, startDate_Year
+
+$startDate = makeTimeStamp($startDate_Year,$startDate_Month,$startDate_Day);
+
+function makeTimeStamp($year="",$month="",$day="")
+{
+	if(empty($year))
+		$year = strftime("%Y");
+	if(empty($month))
+		$month = strftime("%m");
+	if(empty($day))
+		$day = strftime("%d");
+
+	return mktime(0,0,0,$month,$day,$year);
+}</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="tips.passing.vars.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="tips.wap.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Passing variable title to header template</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="tips.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>WAP/WML</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

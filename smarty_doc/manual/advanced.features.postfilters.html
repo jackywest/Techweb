@@ -1,0 +1,204 @@
+<HTML
+><HEAD
+><TITLE
+>Postfilters</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+"><LINK
+REL="HOME"
+TITLE="Smarty - the compiling PHP template engine"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Advanced Features"
+HREF="advanced.features.html"><LINK
+REL="PREVIOUS"
+TITLE="Prefilters"
+HREF="advanced.features.prefilters.html"><LINK
+REL="NEXT"
+TITLE="Output Filters"
+HREF="advanced.features.outputfilters.html"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Smarty - the compiling PHP template engine</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="advanced.features.prefilters.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 15. Advanced Features</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="advanced.features.outputfilters.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="ADVANCED.FEATURES.POSTFILTERS"
+>Postfilters</A
+></H1
+><P
+>     Template postfilters are PHP functions that your templates are ran through
+     after they are compiled. Postfilters can be either 
+     <A
+HREF="api.register.postfilter.html"
+>registered</A
+> or loaded
+     from the plugins directory by using
+     <A
+HREF="api.load.filter.html"
+>load_filter()</A
+> function or by
+     setting
+     <A
+HREF="variable.autoload.filters.html"
+>$autoload_filters</A
+>
+     variable. Smarty will pass the compiled template code as the first
+     argument, and expect the function to return the result of the
+     processing.
+    </P
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN3542"
+></A
+><P
+><B
+>Example 15-3. using a template postfilter</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&lt;?php
+// put this in your application
+function add_header_comment($tpl_source, &#38;$smarty)
+{
+    return "&lt;?php echo \"&lt;!-- Created by Smarty! --&gt;\n\" ?&gt;\n".$tpl_source;
+}
+
+// register the postfilter
+$smarty-&#62;register_postfilter("add_header_comment");
+$smarty-&#62;display("index.tpl");
+?&gt;
+
+{* compiled Smarty template index.tpl *}
+&lt;!-- Created by Smarty! --&gt;
+{* rest of template content... *}</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="advanced.features.prefilters.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="advanced.features.outputfilters.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Prefilters</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="advanced.features.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Output Filters</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

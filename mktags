@@ -1,0 +1,3 @@
+#!/bin/bash
+
+etags `find -type f -iregex ".*[php|js]$" `

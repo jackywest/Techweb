@@ -1,0 +1,214 @@
+
+/* Main Styles for HTML Elements */
+
+HTML, BODY {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Verdana, Geneva, "Bitstream Vera Sans", Helvetica, sans-serif;
+    color:#636466;
+    font-size: 12px;
+    text-align: center;
+  }
+
+
+h1 {
+    font-size:130%;
+    /*text-align:center;*/
+  }
+
+
+center img {
+    border:solid 1px #C6C6C6;
+    margin: 0;
+    padding: 10px;
+    vertical-align:middle;
+  }
+
+/* Login design */
+
+
+.login_top_margin {
+    margin-top: 100px;
+  }
+
+
+fieldset.detail {
+    border-color:#C24E4E;
+    border-style:solid none none;
+    border-width:5px 0 0;
+  }
+
+
+.detail table {
+    width:95%;
+  }
+
+
+form {
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    float: center;
+    width:50em;
+  }
+
+
+#register_detail {
+    background-color: grey;
+    height: 200px;
+  }
+
+
+fieldset a {
+    color:inherit;
+  }
+
+
+fieldset a:hover {
+    color:#C24E4E;
+  }
+
+
+fieldset legend {
+    padding: 15px;
+  }
+
+/* Home design */
+
+
+/* Control Menu */
+
+
+#control_menu {
+text-align:right;
+width: 300px;
+float: right;
+margin-top: 110px;
+}
+
+
+a.control_menu {
+font-size: 16px;
+text-decoration: none;
+color: #3F4C6B;
+}
+
+a.control_menu:hover{
+color:#C24E4E;
+text-decoration:underline;
+}
+
+/* Logo */
+
+#logoheader {
+    width: 99.9%;
+    border: 0;
+    margin: 0;
+    margin-bottom: 30px;
+    padding: 1px;
+    background-color:#F7F7F7;
+    /* background-image: url(../images/header-bg.png);
+    */ background-repeat: repeat-x;
+    border-bottom: 1px solid #999999;
+    height:134px;
+  }
+
+
+#logo {
+    position: absolute;
+    left: 10px;
+    border: none;
+    margin-top: 15px;
+    margin-left: 3%;
+  }
+
+
+
+/* left hand navigation */
+
+#left_navigation {
+    width: 10%;
+    height: auto;
+    /* position: relative; */
+    /* left: 1%; */
+    /* top: 20px; */
+    text-align: center;
+    border: 2px solid #D9D9D9;
+    float: left;
+  }
+
+/* buttons */
+
+
+.buttons input {
+    background-color:#A20000;
+    color:#FFFFFF;
+    font-weight:bold;
+    margin:0 3%;
+  }
+
+
+.buttons {
+    border:0 none;
+    clear:left;
+    padding-top:1em;
+    text-align:center;
+  }
+
+
+.buttons input {
+    width:auto;
+  }
+
+
+/* login error */
+div.login_error, td.login_error{
+color:#C24E4E;
+font-weight: bold;
+}
+
+div.login_valid{
+color: #3F4C6B;
+font-weight: bold;
+}
+
+.valid{
+position: absolute; 
+margin-left: -70px; 
+margin-top: -7px;
+}
+
+/* Main content */
+
+#main_content{
+    
+    height: 300px;
+    width: 70%;
+    float: left;
+    margin-left: 2%;
+    border: solid 4px #C24E4E;
+}
+#profil_content{
+    
+    height: auto;
+    width: 70%;
+    float: left;
+    margin-left: 2%;
+    border: solid 4px #C24E4E;
+
+}
+#profil_style 
+{
+
+	margin-top: 5%;
+	color: #999999;
+	font-size: 18px;
+	margin-bottom: 2%;
+}
+
+#profil_style, #profil_style.h1
+{
+padding: 2%;
+text-align: left;
+}
+

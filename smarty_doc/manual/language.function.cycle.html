@@ -1,0 +1,437 @@
+<HTML
+><HEAD
+><TITLE
+>cycle</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+"><LINK
+REL="HOME"
+TITLE="Smarty - the compiling PHP template engine"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Custom Functions"
+HREF="language.custom.functions.html"><LINK
+REL="PREVIOUS"
+TITLE="counter"
+HREF="language.function.counter.html"><LINK
+REL="NEXT"
+TITLE="debug"
+HREF="language.function.debug.html"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Smarty - the compiling PHP template engine</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="language.function.counter.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 8. Custom Functions</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="language.function.debug.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="LANGUAGE.FUNCTION.CYCLE"
+>cycle</A
+></H1
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN1310"
+></A
+><P
+></P
+><TABLE
+BORDER="1"
+CLASS="CALSTABLE"
+><THEAD
+><TR
+><TH
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>Attribute Name</TH
+><TH
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>Type</TH
+><TH
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>Required</TH
+><TH
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>Default</TH
+><TH
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Description</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>name</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>string</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>No</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+><I
+CLASS="EMPHASIS"
+>default</I
+></TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>The name of the cycle</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>values</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>mixed</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>Yes</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+><I
+CLASS="EMPHASIS"
+>N/A</I
+></TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>The values to cycle through, either a comma
+						delimited list (see delimiter attribute), or an array
+						of values.</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>print</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>boolean</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>No</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+><I
+CLASS="EMPHASIS"
+>true</I
+></TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Whether to print the value or not</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>advance</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>boolean</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>No</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+><I
+CLASS="EMPHASIS"
+>true</I
+></TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Whether or not to advance to the next value</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>delimiter</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>string</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>No</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+><I
+CLASS="EMPHASIS"
+>,</I
+></TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>The delimiter to use in the values attribute.</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>assign</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>string</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>No</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+><I
+CLASS="EMPHASIS"
+>n/a</I
+></TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>the template variable the output will be assigned
+						to</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+><P
+>			Cycle is used to cycle though a set of values. This makes it easy
+			to alternate between two or more colors in a table, or cycle
+			through an array of values.
+			</P
+><P
+>			You can cycle through more than one set of values in your template
+			by supplying a name attribute. Give each set of values a unique
+			name.
+			</P
+><P
+>			You can force the current value not to print with the print
+			attribute set to false. This would be useful for silently skipping
+			a value.
+			</P
+><P
+>			The advance attribute is used to repeat a value. When set to true,
+			the next call to cycle will print the same value.
+			</P
+><P
+>			If you supply the special "assign" attribute, the output of the
+			cycle function will be assigned to this template variable instead of
+			being output to the template.
+			</P
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN1372"
+></A
+><P
+><B
+>Example 8-3. cycle</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>{section name=rows loop=$data}
+&lt;tr bgcolor="{cycle values="#eeeeee,#d0d0d0"}"&gt;
+   &lt;td&gt;{$data[rows]}&lt;/td&gt;
+&lt;/tr&gt;
+{/section}
+
+OUTPUT:
+
+&lt;tr bgcolor="#eeeeee"&gt;
+   &lt;td&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr bgcolor="#d0d0d0"&gt;
+   &lt;td&gt;2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr bgcolor="#eeeeee"&gt;
+   &lt;td&gt;3&lt;/td&gt;
+&lt;/tr&gt;</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="language.function.counter.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="language.function.debug.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>counter</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="language.custom.functions.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>debug</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

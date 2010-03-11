@@ -1,0 +1,266 @@
+<HTML
+><HEAD
+><TITLE
+>Compiler Functions</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+"><LINK
+REL="HOME"
+TITLE="Smarty - the compiling PHP template engine"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Extending Smarty With Plugins"
+HREF="plugins.html"><LINK
+REL="PREVIOUS"
+TITLE="Block Functions"
+HREF="plugins.block.functions.html"><LINK
+REL="NEXT"
+TITLE="Prefilters/Postfilters"
+HREF="plugins.prefilters.postfilters.html"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Smarty - the compiling PHP template engine</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="plugins.block.functions.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 16. Extending Smarty With Plugins</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="plugins.prefilters.postfilters.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="PLUGINS.COMPILER.FUNCTIONS"
+>Compiler Functions</A
+></H1
+><P
+>     Compiler functions are called only during compilation of the template.
+     They are useful for injecting PHP code or time-sensitive static
+     content into the template. If there is both a compiler function and a
+     custom function registered under the same name, the compiler function
+     has precedence.
+    </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><A
+NAME="AEN3774"
+></A
+><P
+></P
+><P
+><CODE
+><CODE
+CLASS="FUNCDEF"
+>mixed <B
+CLASS="FUNCTION"
+>smarty_compiler_<TT
+CLASS="REPLACEABLE"
+><I
+>name</I
+></TT
+></B
+></CODE
+>(string $tag_arg, object &#38;$smarty)</CODE
+></P
+><P
+></P
+></DIV
+><P
+>     The compiler function is passed two parameters: the tag argument
+     string - basically, everything from the function name until the ending
+     delimiter, and the Smarty object. It's supposed to return the PHP code
+     to be injected into the compiled template.
+    </P
+><P
+>     See also
+     <A
+HREF="api.register.compiler.function.html"
+>register_compiler_function()</A
+>,
+     <A
+HREF="api.unregister.compiler.function.html"
+>unregister_compiler_function()</A
+>.
+    </P
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN3787"
+></A
+><P
+><B
+>Example 16-6. simple compiler function</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&lt;?php
+/*
+ * Smarty plugin
+ * -------------------------------------------------------------
+ * File:     compiler.tplheader.php
+ * Type:     compiler
+ * Name:     tplheader
+ * Purpose:  Output header containing the source file name and
+ *           the time it was compiled.
+ * -------------------------------------------------------------
+ */
+function smarty_compiler_tplheader($tag_arg, &#38;$smarty)
+{
+    return "\necho '" . $smarty-&gt;_current_file . " compiled at " . date('Y-m-d H:M'). "';";
+}
+?&gt;</PRE
+></TD
+></TR
+></TABLE
+><P
+>      This function can be called from the template as:
+     </P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>{* this function gets executed at compile time only *}
+{tplheader}</PRE
+></TD
+></TR
+></TABLE
+><P
+>      The resulting PHP code in the compiled template would be something like this:
+     </P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&lt;php
+echo 'index.tpl compiled at 2002-02-20 20:02';
+?&gt;</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="plugins.block.functions.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="plugins.prefilters.postfilters.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Block Functions</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="plugins.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Prefilters/Postfilters</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

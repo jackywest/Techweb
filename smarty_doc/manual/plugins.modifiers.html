@@ -1,0 +1,301 @@
+<HTML
+><HEAD
+><TITLE
+>Modifiers</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+"><LINK
+REL="HOME"
+TITLE="Smarty - the compiling PHP template engine"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Extending Smarty With Plugins"
+HREF="plugins.html"><LINK
+REL="PREVIOUS"
+TITLE="Template Functions"
+HREF="plugins.functions.html"><LINK
+REL="NEXT"
+TITLE="Block Functions"
+HREF="plugins.block.functions.html"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Smarty - the compiling PHP template engine</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="plugins.functions.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 16. Extending Smarty With Plugins</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="plugins.block.functions.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="PLUGINS.MODIFIERS"
+>Modifiers</A
+></H1
+><P
+>     Modifiers are little functions that are applied to a variable in the
+     template before it is displayed or used in some other context.
+     Modifiers can be chained together.
+    </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><A
+NAME="AEN3719"
+></A
+><P
+></P
+><P
+><CODE
+><CODE
+CLASS="FUNCDEF"
+>mixed <B
+CLASS="FUNCTION"
+>smarty_modifier_<TT
+CLASS="REPLACEABLE"
+><I
+>name</I
+></TT
+></B
+></CODE
+>(mixed $value, [mixed $param1, ...])</CODE
+></P
+><P
+></P
+></DIV
+><P
+>     The first parameter to the modifier plugin is the value on which
+     the modifier is supposed to operate. The rest of the parameters can be
+     optional, depending on what kind of operation is supposed to be
+     performed.
+    </P
+><P
+>     The modifier has to return the result of its processing.
+    </P
+><P
+>     See also
+     <A
+HREF="api.register.modifier.html"
+>register_modifier()</A
+>,
+     <A
+HREF="api.unregister.modifier.html"
+>unregister_modifier()</A
+>.
+    </P
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN3733"
+></A
+><P
+><B
+>Example 16-3. simple modifier plugin</B
+></P
+><P
+>      This plugin basically aliases one of the built-in PHP functions. It
+      does not have any additional parameters.
+     </P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&lt;?php
+/*
+ * Smarty plugin
+ * -------------------------------------------------------------
+ * File:     modifier.capitalize.php
+ * Type:     modifier
+ * Name:     capitalize
+ * Purpose:  capitalize words in the string
+ * -------------------------------------------------------------
+ */
+function smarty_modifier_capitalize($string)
+{
+    return ucwords($string);
+}
+?&gt;</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+><P
+></P
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN3738"
+></A
+><P
+><B
+>Example 16-4. more complex modifier plugin</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&lt;?php
+/*
+ * Smarty plugin
+ * -------------------------------------------------------------
+ * File:     modifier.truncate.php
+ * Type:     modifier
+ * Name:     truncate
+ * Purpose:  Truncate a string to a certain length if necessary,
+ *           optionally splitting in the middle of a word, and 
+ *           appending the $etc string.
+ * -------------------------------------------------------------
+ */
+function smarty_modifier_truncate($string, $length = 80, $etc = '...',
+                                  $break_words = false)
+{
+    if ($length == 0)
+        return '';
+
+    if (strlen($string) &#62; $length) {
+        $length -= strlen($etc);
+        $fragment = substr($string, 0, $length+1);
+        if ($break_words)
+            $fragment = substr($fragment, 0, -1);
+        else
+            $fragment = preg_replace('/\s+(\S+)?$/', '', $fragment);
+        return $fragment.$etc;
+    } else
+        return $string;
+}
+?&gt;</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="plugins.functions.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="plugins.block.functions.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Template Functions</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="plugins.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Block Functions</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

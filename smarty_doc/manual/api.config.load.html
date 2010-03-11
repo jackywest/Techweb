@@ -1,0 +1,221 @@
+<HTML
+><HEAD
+><TITLE
+>config_load</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+"><LINK
+REL="HOME"
+TITLE="Smarty - the compiling PHP template engine"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Methods"
+HREF="api.functions.html"><LINK
+REL="PREVIOUS"
+TITLE="clear_config"
+HREF="api.clear.config.html"><LINK
+REL="NEXT"
+TITLE="display"
+HREF="api.display.html"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Smarty - the compiling PHP template engine</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="api.clear.config.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 13. Methods</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="api.display.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="API.CONFIG.LOAD"
+>config_load</A
+></H1
+><DIV
+CLASS="FUNCSYNOPSIS"
+><A
+NAME="AEN3076"
+></A
+><P
+></P
+><P
+><CODE
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FUNCTION"
+>config_load</B
+></CODE
+>(string file [, string section])</CODE
+></P
+><P
+></P
+></DIV
+><P
+>			This loads config file data and assigns it to the template. This
+			works identical to the template <A
+HREF="language.function.config.load.html"
+>config_load</A
+>
+			function.
+			</P
+><DIV
+CLASS="NOTE"
+><BLOCKQUOTE
+CLASS="NOTE"
+><P
+><B
+>Technical Note: </B
+>		   As of Smarty 2.4.0, assigned template variables are kept across
+		   invocations of fetch() and display(). Config vars loaded from
+		   config_load() are always global scope. Config files are also
+		   compiled for faster execution, and respect the <A
+HREF="variable.force.compile.html"
+>force_compile</A
+> and <A
+HREF="variable.compile.check.html"
+>compile_check</A
+> settings.
+    	  </P
+></BLOCKQUOTE
+></DIV
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN3092"
+></A
+><P
+><B
+>Example 13-11. config_load</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>// load config variables and assign them
+$smarty-&#62;config_load('my.conf');
+
+// load a section
+$smarty-&#62;config_load('my.conf','foobar');</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="api.clear.config.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="api.display.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>clear_config</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="api.functions.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>display</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

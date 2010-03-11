@@ -1,0 +1,277 @@
+<HTML
+><HEAD
+><TITLE
+>Naming Conventions</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+"><LINK
+REL="HOME"
+TITLE="Smarty - the compiling PHP template engine"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Extending Smarty With Plugins"
+HREF="plugins.html"><LINK
+REL="PREVIOUS"
+TITLE="Extending Smarty With Plugins"
+HREF="plugins.html"><LINK
+REL="NEXT"
+TITLE="Writing Plugins"
+HREF="plugins.writing.html"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Smarty - the compiling PHP template engine</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="plugins.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 16. Extending Smarty With Plugins</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="plugins.writing.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="PLUGINS.NAMING.CONVENTIONS"
+>Naming Conventions</A
+></H1
+><P
+>     Plugin files and functions must follow a very specific naming
+     convention in order to be located by Smarty.
+    </P
+><P
+>     The plugin files must be named as follows:
+     <A
+NAME="AEN3634"
+></A
+><BLOCKQUOTE
+CLASS="BLOCKQUOTE"
+><P
+>       <TT
+CLASS="FILENAME"
+>        <TT
+CLASS="REPLACEABLE"
+><I
+>type</I
+></TT
+>.<TT
+CLASS="REPLACEABLE"
+><I
+>name</I
+></TT
+>.php
+       </TT
+>
+      </P
+></BLOCKQUOTE
+>
+    </P
+><P
+>     Where <TT
+CLASS="LITERAL"
+>type</TT
+> is one of these plugin types:
+     <P
+></P
+><UL
+COMPACT="COMPACT"
+><LI
+><SPAN
+>function</SPAN
+></LI
+><LI
+><SPAN
+>modifier</SPAN
+></LI
+><LI
+><SPAN
+>block</SPAN
+></LI
+><LI
+><SPAN
+>compiler</SPAN
+></LI
+><LI
+><SPAN
+>prefilter</SPAN
+></LI
+><LI
+><SPAN
+>postfilter</SPAN
+></LI
+><LI
+><SPAN
+>outputfilter</SPAN
+></LI
+><LI
+><SPAN
+>resource</SPAN
+></LI
+><LI
+><SPAN
+>insert</SPAN
+></LI
+></UL
+>
+    </P
+><P
+>     And <TT
+CLASS="LITERAL"
+>name</TT
+> should be a valid identifier (letters,
+     numbers, and underscores only).
+    </P
+><P
+>     Some examples: <TT
+CLASS="LITERAL"
+>function.html_select_date.php</TT
+>,
+     <TT
+CLASS="LITERAL"
+>resource.db.php</TT
+>,
+     <TT
+CLASS="LITERAL"
+>modifier.spacify.php</TT
+>.
+    </P
+><P
+>     The plugin functions inside the plugin files must be named as follows:
+     <A
+NAME="AEN3667"
+></A
+><BLOCKQUOTE
+CLASS="BLOCKQUOTE"
+><P
+>       <B
+CLASS="FUNCTION"
+>smarty_<TT
+CLASS="REPLACEABLE"
+><I
+>type</I
+></TT
+>_<TT
+CLASS="REPLACEABLE"
+><I
+>name</I
+></TT
+>()</B
+>
+      </P
+></BLOCKQUOTE
+>
+    </P
+><P
+>     The meanings of <TT
+CLASS="LITERAL"
+>type</TT
+> and <TT
+CLASS="LITERAL"
+>name</TT
+> are
+     the same as before.
+    </P
+><P
+>     Smarty will output appropriate error messages if the plugin file it
+     needs is not found, or if the file or the plugin function are named
+     improperly.
+    </P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="plugins.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="plugins.writing.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Extending Smarty With Plugins</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="plugins.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Writing Plugins</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

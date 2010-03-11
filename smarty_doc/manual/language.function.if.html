@@ -1,0 +1,253 @@
+<HTML
+><HEAD
+><TITLE
+>if,elseif,else</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+"><LINK
+REL="HOME"
+TITLE="Smarty - the compiling PHP template engine"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Built-in Functions"
+HREF="language.builtin.functions.html"><LINK
+REL="PREVIOUS"
+TITLE="insert"
+HREF="language.function.insert.html"><LINK
+REL="NEXT"
+TITLE="ldelim,rdelim"
+HREF="language.function.ldelim.html"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Smarty - the compiling PHP template engine</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="language.function.insert.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 7. Built-in Functions</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="language.function.ldelim.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="LANGUAGE.FUNCTION.IF"
+>if,elseif,else</A
+></H1
+><P
+>			if statements in Smarty have much the same flexibility as php if
+			statements, with a few added features for the template engine.
+			Every <I
+CLASS="EMPHASIS"
+>if</I
+> must be paired with an
+			<I
+CLASS="EMPHASIS"
+>/if</I
+>. <I
+CLASS="EMPHASIS"
+>else</I
+> and
+			<I
+CLASS="EMPHASIS"
+>elseif</I
+> are also permitted. "eq", "ne","neq",
+			"gt", "lt", "lte", "le", "gte" "ge","is even","is odd", "is not
+			even","is not odd","not","mod","div by","even by","odd
+			by","==","!=","&#62;", "&#60;","&#60;=","&#62;=" are all valid conditional
+            qualifiers, and must be separated from surrounding elements by
+            spaces.
+			</P
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN1021"
+></A
+><P
+><B
+>Example 7-11. if statements</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>{if $name eq "Fred"}
+	Welcome Sir.
+{elseif $name eq "Wilma"}
+	Welcome Ma'am.
+{else}
+	Welcome, whatever you are.
+{/if}
+
+{* an example with "or" logic *}
+{if $name eq "Fred" or $name eq "Wilma"}
+	...
+{/if}
+
+{* same as above *}
+{if $name == "Fred" || $name == "Wilma"}
+	...
+{/if}
+
+{* the following syntax will NOT work, conditional qualifiers
+   must be separated from surrounding elements by spaces *}
+{if $name=="Fred" || $name=="Wilma"}
+	...
+{/if}
+
+
+{* parenthesis are allowed *}
+{if ( $amount &#60; 0 or $amount &#62; 1000 ) and $volume &#62;= #minVolAmt#}
+	...
+{/if}
+
+{* you can also embed php function calls *}
+{if count($var) gt 0}
+	...
+{/if}
+
+{* test if values are even or odd *}
+{if $var is even}
+	...
+{/if}
+{if $var is odd}
+	...
+{/if}
+{if $var is not odd}
+	...
+{/if}
+
+{* test if var is divisible by 4 *}
+{if $var is div by 4}
+	...
+{/if}
+
+{* test if var is even, grouped by two. i.e.,
+0=even, 1=even, 2=odd, 3=odd, 4=even, 5=even, etc. *}
+{if $var is even by 2}
+	...
+{/if}
+
+{* 0=even, 1=even, 2=even, 3=odd, 4=odd, 5=odd, etc. *}
+{if $var is even by 3}
+	...
+{/if}</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="language.function.insert.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="language.function.ldelim.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>insert</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="language.builtin.functions.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>ldelim,rdelim</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

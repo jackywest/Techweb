@@ -1,0 +1,280 @@
+<HTML
+><HEAD
+><TITLE
+>Block Functions</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+"><LINK
+REL="HOME"
+TITLE="Smarty - the compiling PHP template engine"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Extending Smarty With Plugins"
+HREF="plugins.html"><LINK
+REL="PREVIOUS"
+TITLE="Modifiers"
+HREF="plugins.modifiers.html"><LINK
+REL="NEXT"
+TITLE="Compiler Functions"
+HREF="plugins.compiler.functions.html"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Smarty - the compiling PHP template engine</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="plugins.modifiers.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 16. Extending Smarty With Plugins</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="plugins.compiler.functions.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="PLUGINS.BLOCK.FUNCTIONS"
+>Block Functions</A
+></H1
+><DIV
+CLASS="FUNCSYNOPSIS"
+><A
+NAME="AEN3743"
+></A
+><P
+></P
+><P
+><CODE
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FUNCTION"
+>smarty_block_<TT
+CLASS="REPLACEABLE"
+><I
+>name</I
+></TT
+></B
+></CODE
+>(array $params, mixed $content, object &#38;$smarty)</CODE
+></P
+><P
+></P
+></DIV
+><P
+>     Block functions are functions of the form: {func} .. {/func}. In other
+     words, they enclose a template block and operate on the contents of
+     this block. Block functions take precedence over custom functions of
+     the same name, that is, you cannot have both custom function {func} and
+     block function {func} .. {/func}.
+    </P
+><P
+>     Your function implementation is called twice by Smarty:
+     once for the opening tag, and once for the closing tag.
+    </P
+><P
+>     Only the opening tag of the block function may have attributes. All
+     attributes passed to template functions from the template are contained
+     in the <TT
+CLASS="PARAMETER"
+><I
+>$params</I
+></TT
+> as an associative array. You can
+     either access those values directly, e.g.
+     <TT
+CLASS="VARNAME"
+>$params['start']</TT
+> or use
+     <TT
+CLASS="VARNAME"
+>extract($params)</TT
+> to import them into the symbol
+     table. The opening tag attributes are also accessible to your function
+     when processing the closing tag.
+    </P
+><P
+>     The value of <TT
+CLASS="PARAMETER"
+><I
+>$content</I
+></TT
+> variable depends on
+     whether your function is called for the opening or closing tag. In case
+     of the opening tag, it will be <TT
+CLASS="LITERAL"
+>null</TT
+>, and in case of
+     the closing tag it will be the contents of the template block.
+     Note that the template block will have already been processed by
+     Smarty, so all you will receive is the template output, not the
+     template source.
+    </P
+><P
+>     If you have nested block functions, it's possible to find out what the
+     parent block function is by accessing
+     <TT
+CLASS="VARNAME"
+>$smarty-&#62;_tag_stack</TT
+> variable. Just do a var_dump()
+     on it and the structure should be apparent.
+    </P
+><P
+>     See also:
+     <A
+HREF="api.register.block.html"
+>register_block()</A
+>,
+     <A
+HREF="api.unregister.block.html"
+>unregister_block()</A
+>.
+    </P
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN3768"
+></A
+><P
+><B
+>Example 16-5. block function</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&lt;?php
+/*
+ * Smarty plugin
+ * -------------------------------------------------------------
+ * File:     block.translate.php
+ * Type:     block
+ * Name:     translate
+ * Purpose:  translate a block of text
+ * -------------------------------------------------------------
+ */
+function smarty_block_translate($params, $content, &amp;$smarty)
+{
+    if ($content) {
+        $lang = $params['lang'];
+        // do some intelligent translation thing here with $content
+        echo $translation;
+    }
+}</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="plugins.modifiers.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="plugins.compiler.functions.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Modifiers</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="plugins.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Compiler Functions</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

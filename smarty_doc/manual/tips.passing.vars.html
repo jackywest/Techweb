@@ -1,0 +1,217 @@
+<HTML
+><HEAD
+><TITLE
+>Passing variable title to header template</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+"><LINK
+REL="HOME"
+TITLE="Smarty - the compiling PHP template engine"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Tips & Tricks"
+HREF="tips.html"><LINK
+REL="PREVIOUS"
+TITLE="Default Variable Handling"
+HREF="tips.default.var.handling.html"><LINK
+REL="NEXT"
+TITLE="Dates"
+HREF="tips.dates.html"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Smarty - the compiling PHP template engine</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="tips.default.var.handling.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 18. Tips &#38; Tricks</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="tips.dates.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="TIPS.PASSING.VARS"
+>Passing variable title to header template</A
+></H1
+><P
+>		When the majority of your templates use the same headers and footers, it
+		is common to split those out into their own templates and include them.
+		But what if the header needs to have a different title, depending on
+		what page you are coming from? You can pass the title to the header when
+		it is included.
+		</P
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN3961"
+></A
+><P
+><B
+>Example 18-3. Passing the title variable to the header template</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&#13;mainpage.tpl
+------------
+
+{include file="header.tpl" title="Main Page"}
+{* template body goes here *}
+{include file="footer.tpl"}
+
+
+archives.tpl
+------------
+
+{config_load file="archive_page.conf"}
+{include file="header.tpl" title=#archivePageTitle#}
+{* template body goes here *}
+{include file="footer.tpl"}
+
+
+header.tpl
+----------
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;{$title|default:"BC News"}&lt;/TITLE&gt;
+&lt;/HEAD&gt;
+&lt;BODY&gt;
+
+
+footer.tpl
+----------
+&lt;/BODY&gt;
+&lt;/HTML&gt;</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+><P
+>		When the main page is drawn, the title of "Main Page" is passed to the
+		header.tpl, and will subsequently be used as the title. When the
+		archives page is drawn, the title will be "Archives". Notice in the
+		archive example, we are using a variable from the archives_page.conf
+		file instead of a hard coded variable. Also notice that "BC News" is
+		printed if the $title variable is not set, using the
+		<I
+CLASS="EMPHASIS"
+>default</I
+> variable modifier.
+	</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="tips.default.var.handling.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="tips.dates.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Default Variable Handling</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="tips.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Dates</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

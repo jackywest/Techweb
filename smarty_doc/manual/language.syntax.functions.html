@@ -1,0 +1,228 @@
+<HTML
+><HEAD
+><TITLE
+>Functions</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+"><LINK
+REL="HOME"
+TITLE="Smarty - the compiling PHP template engine"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Basic Syntax"
+HREF="language.basic.syntax.html"><LINK
+REL="PREVIOUS"
+TITLE="Basic Syntax"
+HREF="language.basic.syntax.html"><LINK
+REL="NEXT"
+TITLE="Attributes"
+HREF="language.syntax.attributes.html"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Smarty - the compiling PHP template engine</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="language.basic.syntax.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 3. Basic Syntax</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="language.syntax.attributes.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="LANGUAGE.SYNTAX.FUNCTIONS"
+>Functions</A
+></H1
+><P
+>     Each Smarty tag either prints a
+     <A
+HREF="language.variables.html"
+>variable</A
+> or invokes some sort
+     of function. Functions are processed and displayed by enclosing the
+     function and its attributes into delimiters like so: {funcname
+     attr1="val" attr2="val"}.
+    </P
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN165"
+></A
+><P
+><B
+>Example 3-2. function syntax</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>{config_load file="colors.conf"}
+
+{include file="header.tpl"}
+
+{if $name eq "Fred"}
+	You are not allowed here
+{else}
+	Welcome, &lt;font color="{#fontColor#}"&gt;{$name}!&lt;/font&gt;
+{/if}
+
+{include file="footer.tpl"}</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+><P
+>     Both built-in functions and custom functions have the same syntax in
+     the templates. Built-in functions are the inner workings of Smarty,
+     such as <A
+HREF="language.function.if.html"
+><B
+CLASS="COMMAND"
+>{if}</B
+></A
+>, <A
+HREF="language.function.section.html"
+><B
+CLASS="COMMAND"
+>{section}</B
+></A
+> and
+     <A
+HREF="language.function.strip.html"
+><B
+CLASS="COMMAND"
+>{strip}</B
+></A
+>. They cannot be modified. Custom functions are
+     additional functions implemented via plugins. They can be modified to
+     your liking, or you can add new ones. <A
+HREF="language.function.html.options.html"
+><B
+CLASS="COMMAND"
+>{html_options}</B
+></A
+> and
+     <A
+HREF="language.function.html.select.date.html"
+><B
+CLASS="COMMAND"
+>{html_select_date}</B
+></A
+> are examples of custom functions.
+    </P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="language.basic.syntax.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="language.syntax.attributes.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Basic Syntax</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="language.basic.syntax.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Attributes</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

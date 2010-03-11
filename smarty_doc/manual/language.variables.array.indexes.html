@@ -1,0 +1,196 @@
+<HTML
+><HEAD
+><TITLE
+>Array indexes</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+"><LINK
+REL="HOME"
+TITLE="Smarty - the compiling PHP template engine"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Variables assigned from PHP"
+HREF="language.variables.html#LANGUAGE.ASSIGNED.VARIABLES"><LINK
+REL="PREVIOUS"
+TITLE="Associative arrays"
+HREF="language.variables.assoc.arrays.html"><LINK
+REL="NEXT"
+TITLE="Objects"
+HREF="language.variables.objects.html"></HEAD
+><BODY
+CLASS="SECT2"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Smarty - the compiling PHP template engine</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="language.variables.assoc.arrays.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="language.variables.objects.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="LANGUAGE.VARIABLES.ARRAY.INDEXES"
+>Array indexes</A
+></H2
+><P
+>			You can reference arrays by their index, much like native PHP
+			syntax.
+			</P
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN215"
+></A
+><P
+><B
+>Example 4-3. accessing arrays by index</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>index.php:
+
+$smarty = new Smarty;
+$smarty-&gt;assign('Contacts',
+    array('555-222-9876',
+          'zaphod@slartibartfast.com',
+          array('555-444-3333',
+                '555-111-1234')));
+$smarty-&gt;display('index.tpl');
+
+index.tpl:
+
+{$Contacts[0]}&lt;br&gt;
+{$Contacts[1]}&lt;br&gt;
+{* you can print arrays of arrays as well *}
+{$Contacts[2][0]}&lt;br&gt;
+{$Contacts[2][1]}&lt;br&gt;
+
+OUTPUT:
+
+555-222-9876&lt;br&gt;
+zaphod@slartibartfast.com&lt;br&gt;
+555-444-3333&lt;br&gt;
+555-111-1234&lt;br&gt;</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="language.variables.assoc.arrays.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="language.variables.objects.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Associative arrays</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="language.variables.html#LANGUAGE.ASSIGNED.VARIABLES"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Objects</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

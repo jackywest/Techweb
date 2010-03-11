@@ -1,0 +1,255 @@
+<HTML
+><HEAD
+><TITLE
+>Templates from other sources</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+"><LINK
+REL="HOME"
+TITLE="Smarty - the compiling PHP template engine"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Resources"
+HREF="template.resources.html"><LINK
+REL="PREVIOUS"
+TITLE="Templates from any directory"
+HREF="templates.from.any.dir.html"><LINK
+REL="NEXT"
+TITLE="Default template handler function"
+HREF="default.template.handler.function.html"></HEAD
+><BODY
+CLASS="SECT2"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Smarty - the compiling PHP template engine</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="templates.from.any.dir.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="default.template.handler.function.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="TEMPLATES.FROM.ELSEWHERE"
+>Templates from other sources</A
+></H2
+><P
+>     You can retrieve templates using whatever possible source you can
+     access with PHP: databases, sockets, LDAP, and so on. You do this
+     by writing resource plugin functions and registering them with
+     Smarty.
+    </P
+><P
+>     See <A
+HREF="plugins.resources.html"
+>resource plugins</A
+>
+     section for more information on the functions you are supposed
+     to provide.
+    </P
+><DIV
+CLASS="NOTE"
+><BLOCKQUOTE
+CLASS="NOTE"
+><P
+><B
+>Note: </B
+>      Note that you cannot override the built-in
+      <TT
+CLASS="LITERAL"
+>file</TT
+> resource, but you can provide a resource
+      that fetches templates from the file system in some other way by
+      registering under another resource name.
+     </P
+></BLOCKQUOTE
+></DIV
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN3592"
+></A
+><P
+><B
+>Example 15-9. using custom resources</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>// from PHP script
+
+// put these function somewhere in your application
+function db_get_template ($tpl_name, &amp;$tpl_source, &amp;$smarty_obj)
+{
+    // do database call here to fetch your template,
+    // populating $tpl_source
+    $sql = new SQL;
+    $sql-&#62;query("select tpl_source
+                   from my_table
+                  where tpl_name='$tpl_name'");
+    if ($sql-&#62;num_rows) {
+        $tpl_source = $sql-&#62;record['tpl_source'];
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function db_get_timestamp($tpl_name, &amp;$tpl_timestamp, &amp;$smarty_obj)
+{
+    // do database call here to populate $tpl_timestamp.
+    $sql = new SQL;
+    $sql-&#62;query("select tpl_timestamp
+                   from my_table
+                  where tpl_name='$tpl_name'");
+    if ($sql-&#62;num_rows) {
+        $tpl_timestamp = $sql-&#62;record['tpl_timestamp'];
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function db_get_secure($tpl_name, &#38;$smarty_obj)
+{
+    // assume all templates are secure
+    return true;
+}
+
+function db_get_trusted($tpl_name, &#38;$smarty_obj)
+{
+    // not used for templates
+}
+
+// register the resource name "db"
+$smarty-&#62;register_resource("db", array("db_get_template",
+                                       "db_get_timestamp",
+                                       "db_get_secure",
+                                       "db_get_trusted"));
+
+// using resource from php script
+$smarty-&#62;display("db:index.tpl");
+
+{* using resource from within Smarty template *}
+{include file="db:/extras/navigation.tpl"}</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="templates.from.any.dir.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="default.template.handler.function.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Templates from any directory</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="template.resources.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Default template handler function</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,272 @@
+<HTML
+><HEAD
+><TITLE
+>Variables</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+"><LINK
+REL="HOME"
+TITLE="Smarty - the compiling PHP template engine"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Smarty For Template Designers"
+HREF="smarty.for.designers.html"><LINK
+REL="PREVIOUS"
+TITLE="Embedding Vars in Double Quotes"
+HREF="language.syntax.quotes.html"><LINK
+REL="NEXT"
+TITLE="Associative arrays"
+HREF="language.variables.assoc.arrays.html"></HEAD
+><BODY
+CLASS="CHAPTER"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Smarty - the compiling PHP template engine</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="language.syntax.quotes.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="language.variables.assoc.arrays.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="CHAPTER"
+><H1
+><A
+NAME="LANGUAGE.VARIABLES"
+>Chapter 4. Variables</A
+></H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="language.variables.html#LANGUAGE.ASSIGNED.VARIABLES"
+>Variables assigned from PHP</A
+></DT
+><DT
+><A
+HREF="language.config.variables.html"
+>Variables loaded from config files</A
+></DT
+><DT
+><A
+HREF="language.variables.smarty.html"
+>{$smarty} reserved variable</A
+></DT
+></DL
+></DIV
+><P
+>	Smarty has several different types of variables. The type of the variable
+	depends on what symbol it is prefixed with (or enclosed within).
+   </P
+><P
+>    Variables in Smarty can be either displayed directly or used as arguments
+    for function attributes and modifiers, inside conditional expressions,
+    etc. To print a variable, simply enclose it in the delimiters so that it
+    is the only thing contained between them. Examples:
+    <TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>{$Name}
+
+{$Contacts[row].Phone}
+
+&lt;body bgcolor="{#bgcolor#}"&gt;</PRE
+></TD
+></TR
+></TABLE
+>
+   </P
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="LANGUAGE.ASSIGNED.VARIABLES"
+>Variables assigned from PHP</A
+></H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="language.variables.assoc.arrays.html"
+>Associative arrays</A
+></DT
+><DT
+><A
+HREF="language.variables.array.indexes.html"
+>Array indexes</A
+></DT
+><DT
+><A
+HREF="language.variables.objects.html"
+>Objects</A
+></DT
+></DL
+></DIV
+><P
+>	 Variables that are assigned from PHP are referenced by preceding them with
+	 a dollar sign <TT
+CLASS="LITERAL"
+>$</TT
+>. Variables assigned from within the
+	 template with the <A
+HREF="language.custom.functions.html#LANGUAGE.FUNCTION.ASSIGN"
+>assign</A
+>
+	 function are also displayed this way.
+    </P
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN203"
+></A
+><P
+><B
+>Example 4-1. assigned variables</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>Hello {$firstname}, glad to see you could make it.
+&lt;p&gt;
+Your last login was on {$lastLoginDate}.
+
+OUTPUT:
+
+Hello Doug, glad to see you could make it.
+&lt;p&gt;
+Your last login was on January 11th, 2001.</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="language.syntax.quotes.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="language.variables.assoc.arrays.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Embedding Vars in Double Quotes</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="smarty.for.designers.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Associative arrays</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

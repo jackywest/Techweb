@@ -1,0 +1,383 @@
+<HTML
+><HEAD
+><TITLE
+>Resources</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+"><LINK
+REL="HOME"
+TITLE="Smarty - the compiling PHP template engine"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Extending Smarty With Plugins"
+HREF="plugins.html"><LINK
+REL="PREVIOUS"
+TITLE="Output Filters"
+HREF="plugins.outputfilters.html"><LINK
+REL="NEXT"
+TITLE="Inserts"
+HREF="plugins.inserts.html"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Smarty - the compiling PHP template engine</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="plugins.outputfilters.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 16. Extending Smarty With Plugins</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="plugins.inserts.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="PLUGINS.RESOURCES"
+>Resources</A
+></H1
+><P
+>     Resource plugins are meant as a generic way of providing template
+     sources or PHP script components to Smarty. Some examples of resources:
+     databases, LDAP, shared memory, sockets, and so on.
+    </P
+><P
+>     There are a total of 4 functions that need to be registered for each
+     type of resource. Every function will receive the requested resource as
+     the first parameter and the Smarty object as the last parameter. The
+     rest of parameters depend on the function.
+    </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><A
+NAME="AEN3844"
+></A
+><P
+></P
+><P
+><CODE
+><CODE
+CLASS="FUNCDEF"
+>bool <B
+CLASS="FUNCTION"
+>smarty_resource_<TT
+CLASS="REPLACEABLE"
+><I
+>name</I
+></TT
+>_source</B
+></CODE
+>(string $rsrc_name, string &#38;$source, object &#38;$smarty)</CODE
+></P
+><P
+><CODE
+><CODE
+CLASS="FUNCDEF"
+>bool <B
+CLASS="FUNCTION"
+>smarty_resource_<TT
+CLASS="REPLACEABLE"
+><I
+>name</I
+></TT
+>_timestamp</B
+></CODE
+>(string $rsrc_name, int &#38;$timestamp, object &#38;$smarty)</CODE
+></P
+><P
+><CODE
+><CODE
+CLASS="FUNCDEF"
+>bool <B
+CLASS="FUNCTION"
+>smarty_resource_<TT
+CLASS="REPLACEABLE"
+><I
+>name</I
+></TT
+>_secure</B
+></CODE
+>(string $rsrc_name, object &#38;$smarty)</CODE
+></P
+><P
+><CODE
+><CODE
+CLASS="FUNCDEF"
+>bool <B
+CLASS="FUNCTION"
+>smarty_resource_<TT
+CLASS="REPLACEABLE"
+><I
+>name</I
+></TT
+>_trusted</B
+></CODE
+>(string $rsrc_name, object &#38;$smarty)</CODE
+></P
+><P
+></P
+></DIV
+><P
+>     The first function is supposed to retrieve the resource. Its second
+     parameter is a variable passed by reference where the result should be
+     stored. The function is supposed to return <TT
+CLASS="LITERAL"
+>true</TT
+> if
+     it was able to successfully retrieve the resource and
+     <TT
+CLASS="LITERAL"
+>false</TT
+> otherwise.
+    </P
+><P
+>     The second function is supposed to retrieve the last modification time
+     of the requested resource (as a UNIX timestamp). The second parameter
+     is a variable passed by reference where the timestamp should be stored.
+     The function is supposed to return <TT
+CLASS="LITERAL"
+>true</TT
+> if the
+     timestamp could be succesfully determined, and <TT
+CLASS="LITERAL"
+>false</TT
+>
+     otherwise.
+    </P
+><P
+>     The third function is supposed to return <TT
+CLASS="LITERAL"
+>true</TT
+> or
+     <TT
+CLASS="LITERAL"
+>false</TT
+>, depending on whether the requested resource
+     is secure or not. This function is used only for template resources but
+     should still be defined.
+    </P
+><P
+>     The fourth function is supposed to return <TT
+CLASS="LITERAL"
+>true</TT
+> or
+     <TT
+CLASS="LITERAL"
+>false</TT
+>, depending on whether the requested resource
+     is trusted or not. This function is used for only for PHP script
+     components requested by <A
+HREF="language.function.include.php.html"
+><B
+CLASS="COMMAND"
+>{include_php}</B
+></A
+> tag or
+     <A
+HREF="language.function.insert.html"
+><B
+CLASS="COMMAND"
+>{insert}</B
+></A
+> tag with <TT
+CLASS="STRUCTFIELD"
+><I
+>src</I
+></TT
+>
+     attribute. However, it should still be defined even for template
+     resources.
+    </P
+><P
+>     See also
+     <A
+HREF="api.register.resource.html"
+>register_resource()</A
+>,
+     <A
+HREF="api.unregister.resource.html"
+>unregister_resource()</A
+>.
+    </P
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN3899"
+></A
+><P
+><B
+>Example 16-10. resource plugin</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&lt;?php
+/*
+ * Smarty plugin
+ * ------------------------------------------------------------- 
+ * File:     resource.db.php
+ * Type:     resource
+ * Name:     db
+ * Purpose:  Fetches templates from a database
+ * -------------------------------------------------------------
+ */
+function smarty_resource_db_source($tpl_name, &amp;$tpl_source, &amp;$smarty)
+{
+    // do database call here to fetch your template,
+    // populating $tpl_source
+    $sql = new SQL;
+    $sql-&#62;query("select tpl_source
+                   from my_table
+                  where tpl_name='$tpl_name'");
+    if ($sql-&#62;num_rows) {
+        $tpl_source = $sql-&#62;record['tpl_source'];
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function smarty_resource_db_timestamp($tpl_name, &amp;$tpl_timestamp, &amp;$smarty)
+{
+    // do database call here to populate $tpl_timestamp.
+    $sql = new SQL;
+    $sql-&#62;query("select tpl_timestamp
+                   from my_table
+                  where tpl_name='$tpl_name'");
+    if ($sql-&#62;num_rows) {
+        $tpl_timestamp = $sql-&#62;record['tpl_timestamp'];
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function smarty_resource_db_secure($tpl_name, &amp;$smarty)
+{
+    // assume all templates are secure
+    return true;
+}
+
+function smarty_resource_db_trusted($tpl_name, &amp;$smarty)
+{
+    // not used for templates
+}
+?&gt;</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="plugins.outputfilters.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="plugins.inserts.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Output Filters</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="plugins.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Inserts</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

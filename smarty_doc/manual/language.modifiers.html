@@ -1,0 +1,378 @@
+<HTML
+><HEAD
+><TITLE
+>Variable Modifiers</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+"><LINK
+REL="HOME"
+TITLE="Smarty - the compiling PHP template engine"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Smarty For Template Designers"
+HREF="smarty.for.designers.html"><LINK
+REL="PREVIOUS"
+TITLE="{$smarty.template}"
+HREF="language.variables.smarty.template.html"><LINK
+REL="NEXT"
+TITLE="count_characters"
+HREF="language.modifier.count.characters.html"></HEAD
+><BODY
+CLASS="CHAPTER"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Smarty - the compiling PHP template engine</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="language.variables.smarty.template.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="language.modifier.count.characters.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="CHAPTER"
+><H1
+><A
+NAME="LANGUAGE.MODIFIERS"
+>Chapter 5. Variable Modifiers</A
+></H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="language.modifiers.html#LANGUAGE.MODIFIER.CAPITALIZE"
+>capitalize</A
+></DT
+><DT
+><A
+HREF="language.modifier.count.characters.html"
+>count_characters</A
+></DT
+><DT
+><A
+HREF="language.modifier.cat.html"
+>cat</A
+></DT
+><DT
+><A
+HREF="language.modifier.count.paragraphs.html"
+>count_paragraphs</A
+></DT
+><DT
+><A
+HREF="language.modifier.count.sentences.html"
+>count_sentences</A
+></DT
+><DT
+><A
+HREF="language.modifier.count.words.html"
+>count_words</A
+></DT
+><DT
+><A
+HREF="language.modifier.date.format.html"
+>date_format</A
+></DT
+><DT
+><A
+HREF="language.modifier.default.html"
+>default</A
+></DT
+><DT
+><A
+HREF="language.modifier.escape.html"
+>escape</A
+></DT
+><DT
+><A
+HREF="language.modifier.indent.html"
+>indent</A
+></DT
+><DT
+><A
+HREF="language.modifier.lower.html"
+>lower</A
+></DT
+><DT
+><A
+HREF="language.modifier.nl2br.html"
+>nl2br</A
+></DT
+><DT
+><A
+HREF="language.modifier.regex.replace.html"
+>regex_replace</A
+></DT
+><DT
+><A
+HREF="language.modifier.replace.html"
+>replace</A
+></DT
+><DT
+><A
+HREF="language.modifier.spacify.html"
+>spacify</A
+></DT
+><DT
+><A
+HREF="language.modifier.string.format.html"
+>string_format</A
+></DT
+><DT
+><A
+HREF="language.modifier.strip.html"
+>strip</A
+></DT
+><DT
+><A
+HREF="language.modifier.strip.tags.html"
+>strip_tags</A
+></DT
+><DT
+><A
+HREF="language.modifier.truncate.html"
+>truncate</A
+></DT
+><DT
+><A
+HREF="language.modifier.upper.html"
+>upper</A
+></DT
+><DT
+><A
+HREF="language.modifier.wordwrap.html"
+>wordwrap</A
+></DT
+></DL
+></DIV
+><P
+>      Variable modifiers can be applied to variables, custom functions or strings. To
+      apply a modifier, specify the value followed by the <TT
+CLASS="LITERAL"
+>|</TT
+>
+      (pipe) and the modifier name. A modifier may accept additional parameters
+      that affect its behavior. These parameters follow the modifer name and are
+      separated by <TT
+CLASS="LITERAL"
+>:</TT
+> (colon).
+     </P
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN275"
+></A
+><P
+><B
+>Example 5-1. modifier example</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>{* Uppercase the title *}
+&lt;h2&gt;{$title|upper}&lt;/h2&gt;
+
+{* Truncate the topic to 40 characters use ... at the end *}
+Topic: {$topic|truncate:40:"..."}
+
+{* format a literal string *}
+{"now"|date_format:"%Y/%m/%d"}
+
+{* apply modifier to a custom function *}
+{mailto|upper address="me@domain.dom"}</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+><P
+>      If you apply a modifier to an array variable instead of a single value variable,
+      the modifier will be applied to every value in that array. If you really want
+      the modifier to work on an entire array as a value, you must prepend the
+      modifier name with an <TT
+CLASS="LITERAL"
+>@</TT
+> symbol like so:
+      <TT
+CLASS="LITERAL"
+>{$articleTitle|@count}</TT
+> (this will print out the number of
+      elements in the $articleTitle array.)
+     </P
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="LANGUAGE.MODIFIER.CAPITALIZE"
+>capitalize</A
+></H1
+><P
+>        This is used to capitalize the first letter of all words in a variable.
+       </P
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN284"
+></A
+><P
+><B
+>Example 5-2. capitalize</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>index.php:
+
+$smarty = new Smarty;
+$smarty-&gt;assign('articleTitle', 'Police begin campaign to rundown jaywalkers.');
+$smarty-&gt;display('index.tpl');
+
+index.tpl:
+
+{$articleTitle}
+{$articleTitle|capitalize}
+
+OUTPUT:
+
+Police begin campaign to rundown jaywalkers.
+Police Begin Campaign To Rundown Jaywalkers.</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="language.variables.smarty.template.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="language.modifier.count.characters.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>{$smarty.template}</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="smarty.for.designers.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>count_characters</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

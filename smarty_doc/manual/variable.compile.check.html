@@ -1,0 +1,156 @@
+<HTML
+><HEAD
+><TITLE
+>$compile_check</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+"><LINK
+REL="HOME"
+TITLE="Smarty - the compiling PHP template engine"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Variables"
+HREF="api.variables.html"><LINK
+REL="PREVIOUS"
+TITLE="$autoload_filters"
+HREF="variable.autoload.filters.html"><LINK
+REL="NEXT"
+TITLE="$force_compile"
+HREF="variable.force.compile.html"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Smarty - the compiling PHP template engine</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="variable.autoload.filters.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 12. Variables</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="variable.force.compile.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="VARIABLE.COMPILE.CHECK"
+>$compile_check</A
+></H1
+><P
+>	   Upon each invocation of the PHP application, Smarty tests to see if the
+	   current template has changed (different time stamp) since the last time
+	   it was compiled. If it has changed, it recompiles that template. If the
+	   template has not been compiled, it will compile regardless of this
+	   setting. By default this variable is set to true. Once an application is
+	   put into production (templates won't be changing), the compile_check
+	   step is no longer needed. Be sure to set $compile_check to "false" for
+	   maximal performance. Note that if you change this to "false" and a
+	   template file is changed, you will *not* see the change since the
+	   template will not get recompiled. If caching is enabled and
+	   compile_check is enabled, then the cache files will get regenerated if
+	   an involved template file or config file was updated. See <A
+HREF="variable.force.compile.html"
+>$force_compile</A
+> or <A
+HREF="api.clear.compiled.tpl.html"
+>clear_compiled_tpl</A
+>.
+      </P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="variable.autoload.filters.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="variable.force.compile.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>$autoload_filters</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="api.variables.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>$force_compile</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

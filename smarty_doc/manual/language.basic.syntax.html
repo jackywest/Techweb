@@ -1,0 +1,242 @@
+<HTML
+><HEAD
+><TITLE
+>Basic Syntax</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+"><LINK
+REL="HOME"
+TITLE="Smarty - the compiling PHP template engine"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Smarty For Template Designers"
+HREF="smarty.for.designers.html"><LINK
+REL="PREVIOUS"
+TITLE="Smarty For Template Designers"
+HREF="smarty.for.designers.html"><LINK
+REL="NEXT"
+TITLE="Functions"
+HREF="language.syntax.functions.html"></HEAD
+><BODY
+CLASS="CHAPTER"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Smarty - the compiling PHP template engine</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="smarty.for.designers.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="language.syntax.functions.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="CHAPTER"
+><H1
+><A
+NAME="LANGUAGE.BASIC.SYNTAX"
+>Chapter 3. Basic Syntax</A
+></H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="language.basic.syntax.html#LANGUAGE.SYNTAX.COMMENTS"
+>Comments</A
+></DT
+><DT
+><A
+HREF="language.syntax.functions.html"
+>Functions</A
+></DT
+><DT
+><A
+HREF="language.syntax.attributes.html"
+>Attributes</A
+></DT
+><DT
+><A
+HREF="language.syntax.quotes.html"
+>Embedding Vars in Double Quotes</A
+></DT
+></DL
+></DIV
+><P
+>    All Smarty template tags are enclosed within delimiters. By
+    default, these delimiters are <TT
+CLASS="LITERAL"
+>{</TT
+> and
+    <TT
+CLASS="LITERAL"
+>}</TT
+>, but they can be changed.
+   </P
+><P
+>    For these examples, we will assume that you are using the default
+    delimiters. In Smarty, all content outside of delimiters is displayed as
+    static content, or unchanged. When Smarty encounters template tags, it
+    attempts to interpret them, and displays the appropriate output in their
+    place.
+   </P
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="LANGUAGE.SYNTAX.COMMENTS"
+>Comments</A
+></H1
+><P
+>     Template comments are surrounded by asterisks, and that is surrounded
+     by the delimiter tags like so: {* this is a comment *}
+     Smarty comments are not displayed in the final output of the template.
+     They are used for making internal notes in the templates.
+    </P
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN158"
+></A
+><P
+><B
+>Example 3-1. Comments</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>{* Smarty *}
+
+{* include the header file here *}
+{include file="header.tpl"}
+
+{include file=$includeFile}
+
+{include file=#includeFile#}
+
+{* display dropdown lists *}
+&lt;SELECT name=company&gt;
+{html_options values=$vals selected=$selected output=$output}
+&lt;/SELECT&gt;</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="smarty.for.designers.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="language.syntax.functions.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Smarty For Template Designers</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="smarty.for.designers.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Functions</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

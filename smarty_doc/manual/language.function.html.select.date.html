@@ -1,0 +1,964 @@
+<HTML
+><HEAD
+><TITLE
+>html_select_date</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+"><LINK
+REL="HOME"
+TITLE="Smarty - the compiling PHP template engine"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Custom Functions"
+HREF="language.custom.functions.html"><LINK
+REL="PREVIOUS"
+TITLE="html_radios"
+HREF="language.function.html.radios.html"><LINK
+REL="NEXT"
+TITLE="html_select_time"
+HREF="language.function.html.select.time.html"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Smarty - the compiling PHP template engine</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="language.function.html.radios.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 8. Custom Functions</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="language.function.html.select.time.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="LANGUAGE.FUNCTION.HTML.SELECT.DATE"
+>html_select_date</A
+></H1
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN1744"
+></A
+><P
+></P
+><TABLE
+BORDER="1"
+CLASS="CALSTABLE"
+><THEAD
+><TR
+><TH
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>Attribute Name</TH
+><TH
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>Type</TH
+><TH
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>Required</TH
+><TH
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>Default</TH
+><TH
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Description</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>prefix</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>string</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>No</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>Date_</TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>what to prefix the var name with</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>time</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>timestamp/YYYY-MM-DD</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>No</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>current time in unix timestamp or YYYY-MM-DD
+						format</TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>what date/time to use</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>start_year</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>string</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>No</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>current year</TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>the first year in the dropdown, either
+						year number, or relative to current year (+/- N)</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>end_year</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>string</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>No</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>same as start_year</TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>the last year in the dropdown, either
+						year number, or relative to current year (+/- N)</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>display_days</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>boolean</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>No</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>true</TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>whether to display days or not</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>display_months</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>boolean</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>No</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>true</TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>whether to display months or not</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>display_years</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>boolean</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>No</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>true</TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>whether to display years or not</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>month_format</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>string</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>No</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>%B</TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>what format the month should be in (strftime)</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>day_format</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>string</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>No</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>%02d</TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>what format the day output should be in (sprintf)</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>day_value_format</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>string</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>No</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>%d</TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>what format the day value should be in (sprintf)</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>year_as_text</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>boolean</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>No</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>false</TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>whether or not to display the year as text</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>reverse_years</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>boolean</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>No</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>false</TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>display years in reverse order</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>field_array</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>string</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>No</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>null</TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>							if a name is given, the select boxes will be drawn
+							such that the results will be returned to PHP in the
+							form of name[Day], name[Year], name[Month].
+						</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>day_size</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>string</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>No</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>null</TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>adds size attribute to select tag if given</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>month_size</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>string</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>No</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>null</TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>adds size attribute to select tag if given</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>year_size</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>string</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>No</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>null</TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>adds size attribute to select tag if given</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>all_extra</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>string</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>No</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>null</TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>adds extra attributes to all select/input tags if
+						given</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>day_extra</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>string</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>No</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>null</TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>adds extra attributes to select/input tags if
+						given</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>month_extra</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>string</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>No</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>null</TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>adds extra attributes to select/input tags if
+						given</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>year_extra</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>string</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>No</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>null</TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>adds extra attributes to select/input tags if
+						given</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>field_order</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>string</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>No</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>MDY</TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>the order in which to display the fields</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>field_separator</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>string</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>No</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>\n</TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>string printed between different fields</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>month_value_format</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>string</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>No</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>%m</TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>strftime format of the month values, default is
+						%m for month numbers.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+><P
+>			html_select_date is a custom function that creates date dropdowns
+			for you. It can display any or all of year, month, and day.
+			</P
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN1898"
+></A
+><P
+><B
+>Example 8-10. html_select_date</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>{html_select_date}
+
+
+OUTPUT:
+
+&lt;select name="Date_Month"&gt;
+&lt;option value="1"&gt;January&lt;/option&gt;
+&lt;option value="2"&gt;February&lt;/option&gt;
+&lt;option value="3"&gt;March&lt;/option&gt;
+&lt;option value="4"&gt;April&lt;/option&gt;
+&lt;option value="5"&gt;May&lt;/option&gt;
+&lt;option value="6"&gt;June&lt;/option&gt;
+&lt;option value="7"&gt;July&lt;/option&gt;
+&lt;option value="8"&gt;August&lt;/option&gt;
+&lt;option value="9"&gt;September&lt;/option&gt;
+&lt;option value="10"&gt;October&lt;/option&gt;
+&lt;option value="11"&gt;November&lt;/option&gt;
+&lt;option value="12" selected&gt;December&lt;/option&gt;
+&lt;/select&gt;
+&lt;select name="Date_Day"&gt;
+&lt;option value="1"&gt;01&lt;/option&gt;
+&lt;option value="2"&gt;02&lt;/option&gt;
+&lt;option value="3"&gt;03&lt;/option&gt;
+&lt;option value="4"&gt;04&lt;/option&gt;
+&lt;option value="5"&gt;05&lt;/option&gt;
+&lt;option value="6"&gt;06&lt;/option&gt;
+&lt;option value="7"&gt;07&lt;/option&gt;
+&lt;option value="8"&gt;08&lt;/option&gt;
+&lt;option value="9"&gt;09&lt;/option&gt;
+&lt;option value="10"&gt;10&lt;/option&gt;
+&lt;option value="11"&gt;11&lt;/option&gt;
+&lt;option value="12"&gt;12&lt;/option&gt;
+&lt;option value="13" selected&gt;13&lt;/option&gt;
+&lt;option value="14"&gt;14&lt;/option&gt;
+&lt;option value="15"&gt;15&lt;/option&gt;
+&lt;option value="16"&gt;16&lt;/option&gt;
+&lt;option value="17"&gt;17&lt;/option&gt;
+&lt;option value="18"&gt;18&lt;/option&gt;
+&lt;option value="19"&gt;19&lt;/option&gt;
+&lt;option value="20"&gt;20&lt;/option&gt;
+&lt;option value="21"&gt;21&lt;/option&gt;
+&lt;option value="22"&gt;22&lt;/option&gt;
+&lt;option value="23"&gt;23&lt;/option&gt;
+&lt;option value="24"&gt;24&lt;/option&gt;
+&lt;option value="25"&gt;25&lt;/option&gt;
+&lt;option value="26"&gt;26&lt;/option&gt;
+&lt;option value="27"&gt;27&lt;/option&gt;
+&lt;option value="28"&gt;28&lt;/option&gt;
+&lt;option value="29"&gt;29&lt;/option&gt;
+&lt;option value="30"&gt;30&lt;/option&gt;
+&lt;option value="31"&gt;31&lt;/option&gt;
+&lt;/select&gt;
+&lt;select name="Date_Year"&gt;
+&lt;option value="2001" selected&gt;2001&lt;/option&gt;
+&lt;/select&gt;</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN1901"
+></A
+><P
+><B
+>Example 8-11. html_select_date</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&#13;{* start and end year can be relative to current year *}
+{html_select_date prefix="StartDate" time=$time start_year="-5" end_year="+1" display_days=false}
+
+OUTPUT: (current year is 2000)
+
+&lt;select name="StartDateMonth"&gt;
+&lt;option value="1"&gt;January&lt;/option&gt;
+&lt;option value="2"&gt;February&lt;/option&gt;
+&lt;option value="3"&gt;March&lt;/option&gt;
+&lt;option value="4"&gt;April&lt;/option&gt;
+&lt;option value="5"&gt;May&lt;/option&gt;
+&lt;option value="6"&gt;June&lt;/option&gt;
+&lt;option value="7"&gt;July&lt;/option&gt;
+&lt;option value="8"&gt;August&lt;/option&gt;
+&lt;option value="9"&gt;September&lt;/option&gt;
+&lt;option value="10"&gt;October&lt;/option&gt;
+&lt;option value="11"&gt;November&lt;/option&gt;
+&lt;option value="12" selected&gt;December&lt;/option&gt;
+&lt;/select&gt;
+&lt;select name="StartDateYear"&gt;
+&lt;option value="1999"&gt;1995&lt;/option&gt;
+&lt;option value="1999"&gt;1996&lt;/option&gt;
+&lt;option value="1999"&gt;1997&lt;/option&gt;
+&lt;option value="1999"&gt;1998&lt;/option&gt;
+&lt;option value="1999"&gt;1999&lt;/option&gt;
+&lt;option value="2000" selected&gt;2000&lt;/option&gt;
+&lt;option value="2001"&gt;2001&lt;/option&gt;
+&lt;/select&gt;</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="language.function.html.radios.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="language.function.html.select.time.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>html_radios</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="language.custom.functions.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>html_select_time</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

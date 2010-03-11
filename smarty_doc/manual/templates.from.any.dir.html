@@ -1,0 +1,246 @@
+<HTML
+><HEAD
+><TITLE
+>Templates from any directory</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+"><LINK
+REL="HOME"
+TITLE="Smarty - the compiling PHP template engine"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Resources"
+HREF="template.resources.html"><LINK
+REL="PREVIOUS"
+TITLE="Templates from $template_dir"
+HREF="templates.from.template.dir.html"><LINK
+REL="NEXT"
+TITLE="Templates from other sources"
+HREF="templates.from.elsewhere.html"></HEAD
+><BODY
+CLASS="SECT2"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Smarty - the compiling PHP template engine</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="templates.from.template.dir.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="templates.from.elsewhere.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="TEMPLATES.FROM.ANY.DIR"
+>Templates from any directory</A
+></H2
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="templates.from.any.dir.html#AEN3578"
+>Windows Filepaths</A
+></DT
+></DL
+></DIV
+><P
+>     Templates outside of the $template_dir require the file: template
+     resource type, followed by the absolute path and name of the
+     template.
+    </P
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN3575"
+></A
+><P
+><B
+>Example 15-7. using templates from any directory</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>// from PHP script
+$smarty-&#62;display("file:/export/templates/index.tpl");
+$smarty-&#62;display("file:/path/to/my/templates/menu.tpl");
+
+{* from within Smarty template *}
+{include file="file:/usr/local/share/templates/navigation.tpl"}</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN3578"
+>Windows Filepaths</A
+></H3
+><P
+>      If you are using a Windows machine, filepaths usually include a
+      drive letter (C:) at the beginning of the pathname. Be sure to use
+      "file:" in the path to avoid namespace conflicts and get the
+      desired results.
+     </P
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN3581"
+></A
+><P
+><B
+>Example 15-8. using templates from windows file paths</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>// from PHP script
+$smarty-&#62;display("file:C:/export/templates/index.tpl");
+$smarty-&#62;display("file:F:/path/to/my/templates/menu.tpl");
+
+{* from within Smarty template *}
+{include file="file:D:/usr/local/share/templates/navigation.tpl"}</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="templates.from.template.dir.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="templates.from.elsewhere.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Templates from $template_dir</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="template.resources.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Templates from other sources</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

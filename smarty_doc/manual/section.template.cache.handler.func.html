@@ -1,0 +1,293 @@
+<HTML
+><HEAD
+><TITLE
+>Cache Handler Function</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+"><LINK
+REL="HOME"
+TITLE="Smarty - the compiling PHP template engine"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Advanced Features"
+HREF="advanced.features.html"><LINK
+REL="PREVIOUS"
+TITLE="Output Filters"
+HREF="advanced.features.outputfilters.html"><LINK
+REL="NEXT"
+TITLE="Resources"
+HREF="template.resources.html"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Smarty - the compiling PHP template engine</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="advanced.features.outputfilters.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 15. Advanced Features</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="template.resources.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="SECTION.TEMPLATE.CACHE.HANDLER.FUNC"
+>Cache Handler Function</A
+></H1
+><P
+>    As an alternative to using the default file-based caching mechanism, you
+    can specify a custom cache handling function that will be used to read,
+    write and clear cached files.
+   </P
+><P
+>    Create a function in your application that Smarty will use as a
+    cache handler. Set the name of it in the
+    <A
+HREF="variable.cache.handler.func.html"
+>$cache_handler_func</A
+>
+    class variable. Smarty will now use this to handle cached data. The
+    first argument is the action, which will be one of 'read', 'write' and
+    'clear'. The second parameter is the Smarty object. The third parameter
+    is the cached content. Upon a write, Smarty passes the cached content
+    in these parameters. Upon a 'read', Smarty expects your function to
+    accept this parameter by reference and populate it with the cached
+    data. Upon a 'clear', pass a dummy variable here since it is not used.
+    The fourth parameter is the name of the template file (needed for
+    read/write), the fifth parameter is the cache_id (optional), and the
+    sixth is the compile_id (optional).
+   </P
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN3560"
+></A
+><P
+><B
+>Example 15-5. example using MySQL as a cache source</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&lt;?php
+/*
+
+example usage:
+
+include('Smarty.class.php');
+include('mysql_cache_handler.php');
+
+$smarty = new Smarty;
+$smarty-&gt;cache_handler_func = 'mysql_cache_handler';
+
+$smarty-&gt;display('index.tpl');
+
+
+mysql database is expected in this format:
+	
+create database SMARTY_CACHE;
+
+create table CACHE_PAGES(
+CacheID char(32) PRIMARY KEY,
+CacheContents MEDIUMTEXT NOT NULL
+);
+
+*/
+
+function mysql_cache_handler($action, &#38;$smarty_obj, &#38;$cache_content, $tpl_file=null, $cache_id=null, $compile_id=null)
+{
+	// set db host, user and pass here
+	$db_host = 'localhost';
+	$db_user = 'myuser';
+	$db_pass = 'mypass';
+	$db_name = 'SMARTY_CACHE';
+	$use_gzip = false;
+	
+	// create unique cache id
+	$CacheID = md5($tpl_file.$cache_id.$compile_id);
+	
+	if(! $link = mysql_pconnect($db_host, $db_user, $db_pass)) {
+		$smarty_obj-&gt;_trigger_error_msg("cache_handler: could not connect to database");
+		return false;
+	}
+	mysql_select_db($db_name);
+
+	switch ($action) {
+		case 'read':
+			// save cache to database
+			$results = mysql_query("select CacheContents from CACHE_PAGES where CacheID='$CacheID'");
+			if(!$results) {
+				$smarty_obj-&gt;_trigger_error_msg("cache_handler: query failed.");			
+			}
+			$row = mysql_fetch_array($results,MYSQL_ASSOC);
+			
+			if($use_gzip &#38;&#38; function_exists("gzuncompress")) {
+				$cache_contents = gzuncompress($row["CacheContents"]);
+			} else {
+				$cache_contents = $row["CacheContents"];
+			}
+			$return = $results;
+			break;
+		case 'write':
+			// save cache to database
+			
+			if($use_gzip &#38;&#38; function_exists("gzcompress")) {
+				// compress the contents for storage efficiency
+				$contents = gzcompress($cache_content);
+			} else {
+				$contents = $cache_content;
+			}
+			$results = mysql_query("replace into CACHE_PAGES values(
+							'$CacheID',
+							'".addslashes($contents)."')
+						");
+			if(!$results) {
+				$smarty_obj-&gt;_trigger_error_msg("cache_handler: query failed.");			
+			}
+			$return = $results;
+			break;
+		case 'clear':
+			// clear cache info
+			if(empty($cache_id) &#38;&#38; empty($compile_id) &#38;&#38; empty($tpl_file)) {
+				// clear them all
+				$results = mysql_query("delete from CACHE_PAGES");			
+			} else {
+				$results = mysql_query("delete from CACHE_PAGES where CacheID='$CacheID'");			
+			}
+			if(!$results) {
+				$smarty_obj-&gt;_trigger_error_msg("cache_handler: query failed.");			
+			}
+			$return = $results;
+			break;
+		default:
+			// error, unknown action
+			$smarty_obj-&gt;_trigger_error_msg("cache_handler: unknown action \"$action\"");
+			$return = false;
+			break;
+	}
+	mysql_close($link);
+	return $return;
+	
+}
+
+?&gt;</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="advanced.features.outputfilters.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="template.resources.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Output Filters</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="advanced.features.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Resources</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

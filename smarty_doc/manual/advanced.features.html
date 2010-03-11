@@ -1,0 +1,277 @@
+<HTML
+><HEAD
+><TITLE
+>Advanced Features</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+"><LINK
+REL="HOME"
+TITLE="Smarty - the compiling PHP template engine"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Smarty For Programmers"
+HREF="smarty.for.programmers.html"><LINK
+REL="PREVIOUS"
+TITLE="Cache Groups"
+HREF="caching.groups.html"><LINK
+REL="NEXT"
+TITLE="Prefilters"
+HREF="advanced.features.prefilters.html"></HEAD
+><BODY
+CLASS="CHAPTER"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Smarty - the compiling PHP template engine</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="caching.groups.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="advanced.features.prefilters.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="CHAPTER"
+><H1
+><A
+NAME="ADVANCED.FEATURES"
+>Chapter 15. Advanced Features</A
+></H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="advanced.features.html#ADVANCED.FEATURES.OBJECTS"
+>Objects</A
+></DT
+><DT
+><A
+HREF="advanced.features.prefilters.html"
+>Prefilters</A
+></DT
+><DT
+><A
+HREF="advanced.features.postfilters.html"
+>Postfilters</A
+></DT
+><DT
+><A
+HREF="advanced.features.outputfilters.html"
+>Output Filters</A
+></DT
+><DT
+><A
+HREF="section.template.cache.handler.func.html"
+>Cache Handler Function</A
+></DT
+><DT
+><A
+HREF="template.resources.html"
+>Resources</A
+></DT
+></DL
+></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="ADVANCED.FEATURES.OBJECTS"
+>Objects</A
+></H1
+><P
+>     Smarty allows access to PHP objects through the templates. There are
+	 two ways to access them. One way is to register objects to the template,
+	 then use access them via syntax similar to custom functions. The other way
+	 is to assign objects to the templates and access them much like any other
+	 assigned variable. The first method has a much nicer template syntax. It
+	 is also more secure, as a registered object can be restricted to certain
+	 methods or properties. However, a registered object cannot be looped over
+	 or assigned in arrays of objects, etc. The method you choose will be
+	 determined by your needs, but use the first method whenever possible to
+	 keep template syntax to a minimum.
+    </P
+><P
+>    If security is enabled, no private methods or functions can be accessed
+	(begininning with "_"). If a method and property of the same name exist,
+	the method will be used.
+	</P
+><P
+>	You can restrict the methods and properties that can be accessed by
+	listing them in an array as the third registration parameter.
+	</P
+><P
+>	By default, parameters passed to objects through the templates are passed
+	the same way custom functions get them. An associative array is passed
+	as the first parameter, and the smarty object as the second. If you want
+	the parameters passed one at a time for each argument like traditional
+	object parameter passing, set the fourth registration parameter to false.
+	</P
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN3524"
+></A
+><P
+><B
+>Example 15-1. using a registered or assigned object</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&lt;?php
+// the object
+
+class My_Object() {
+	function meth1($params, &#38;$smarty_obj) {
+		return "this is my meth1";
+	}
+}
+
+$myobj = new My_Object;
+// registering the object (will be by reference)
+$smarty-&#62;register_object("foobar",$myobj);
+// if we want to restrict access to certain methods or properties, list them
+$smarty-&#62;register_object("foobar",$myobj,array('meth1','meth2','prop1'));
+// if you want to use the traditional object parameter format, pass a boolean of false
+$smarty-&#62;register_object("foobar",$myobj,null,false);
+
+// We can also assign objects. Assign by ref when possible.
+$smarty-&#62;assign_by_ref("myobj", $myobj);
+
+$smarty-&#62;display("index.tpl");
+?&gt;
+
+TEMPLATE:
+
+{* access our registered object *}
+{foobar-&#62;meth1 p1="foo" p2=$bar}
+
+{* you can also assign the output *}
+{foobar-&#62;meth1 p1="foo" p2=$bar assign="output"}
+the output was {$output)
+
+{* access our assigned object *}
+{$myobj-&#62;meth1("foo",$bar)}</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="caching.groups.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="advanced.features.prefilters.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Cache Groups</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="smarty.for.programmers.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Prefilters</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

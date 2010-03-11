@@ -1,0 +1,202 @@
+<HTML
+><HEAD
+><TITLE
+>Cache Groups</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+"><LINK
+REL="HOME"
+TITLE="Smarty - the compiling PHP template engine"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Caching"
+HREF="caching.html"><LINK
+REL="PREVIOUS"
+TITLE="Multiple Caches Per Page"
+HREF="caching.multiple.caches.html"><LINK
+REL="NEXT"
+TITLE="Advanced Features"
+HREF="advanced.features.html"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Smarty - the compiling PHP template engine</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="caching.multiple.caches.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 14. Caching</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="advanced.features.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="CACHING.GROUPS"
+>Cache Groups</A
+></H1
+><P
+>	You can do more elaborate grouping by setting up cache_id groups. This is
+	accomplished by separating each sub-group with a vertical bar "|" in the
+	cache_id value. You can have as many sub-groups as you like.
+	</P
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN3510"
+></A
+><P
+><B
+>Example 14-9. cache_id groups</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>require('Smarty.class.php');
+$smarty = new Smarty;
+
+$smarty-&#62;caching = true;
+
+// clear all caches with "sports|basketball" as the first two cache_id groups
+$smarty-&#62;clear_cache(null,"sports|basketball");
+
+// clear all caches with "sports" as the first cache_id group. This would
+// include "sports|basketball", or "sports|(anything)|(anything)|(anything)|..."
+$smarty-&#62;clear_cache(null,"sports");
+
+$smarty-&#62;display('index.tpl',"sports|basketball");</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="NOTE"
+><BLOCKQUOTE
+CLASS="NOTE"
+><P
+><B
+>Technical Note: </B
+>   The cache grouping does NOT use the path to the template as any part of the
+   cache_id. For example, if you have display('themes/blue/index.tpl'), you
+   cannot clear the cache for everything under the "themes/blue" directory. If
+   you want to do that, you must group them in the cache_id, such as
+   display('themes/blue/index.tpl','themes|blue'); Then you can clear the
+   caches for the blue theme with clear_cache(null,'themes|blue');
+   </P
+></BLOCKQUOTE
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="caching.multiple.caches.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="advanced.features.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Multiple Caches Per Page</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="caching.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Advanced Features</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

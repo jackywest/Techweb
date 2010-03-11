@@ -1,0 +1,433 @@
+<HTML
+><HEAD
+><TITLE
+>config_load</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+"><LINK
+REL="HOME"
+TITLE="Smarty - the compiling PHP template engine"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Built-in Functions"
+HREF="language.builtin.functions.html"><LINK
+REL="PREVIOUS"
+TITLE="Built-in Functions"
+HREF="language.builtin.functions.html"><LINK
+REL="NEXT"
+TITLE="foreach,foreachelse"
+HREF="language.function.foreach.html"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Smarty - the compiling PHP template engine</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="language.builtin.functions.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 7. Built-in Functions</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="language.function.foreach.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="LANGUAGE.FUNCTION.CONFIG.LOAD"
+>config_load</A
+></H1
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN730"
+></A
+><P
+></P
+><TABLE
+BORDER="1"
+CLASS="CALSTABLE"
+><THEAD
+><TR
+><TH
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>Attribute Name</TH
+><TH
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>Type</TH
+><TH
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>Required</TH
+><TH
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>Default</TH
+><TH
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Description</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>file</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>string</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>Yes</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+><I
+CLASS="EMPHASIS"
+>n/a</I
+></TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>The name of the config file to include</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>section</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>string</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>No</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+><I
+CLASS="EMPHASIS"
+>n/a</I
+></TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>The name of the section to load</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>scope</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>string</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>no</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+><I
+CLASS="EMPHASIS"
+>local</I
+></TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>						How the scope of the loaded variables are treated,
+						which must be one of local, parent or global. local
+						means variables are loaded into the local template
+						context. parent means variables are loaded into both
+						the local context and the parent template that called
+						it. global means variables are available to all
+						templates.
+						</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>global</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>boolean</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>No</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+><I
+CLASS="EMPHASIS"
+>No</I
+></TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>						Whether or not variables are visible to the parent
+						template, same as scope=parent. NOTE: This attribute is
+						deprecated by the scope attribute, but still supported.
+						If scope is supplied, this value is ignored.
+						</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+><P
+>			This function is used for loading in variables from a
+			configuration file into the template.
+            See <A
+HREF="config.files.html"
+>Config Files</A
+> for more
+            info.
+			</P
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN775"
+></A
+><P
+><B
+>Example 7-2. function config_load</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>{config_load file="colors.conf"}
+
+&lt;html&gt;
+&lt;title&gt;{#pageTitle#}&lt;/title&gt;
+&lt;body bgcolor="{#bodyBgColor#}"&gt;
+&lt;table border="{#tableBorderSize#}" bgcolor="{#tableBgColor#}"&gt;
+	&lt;tr bgcolor="{#rowBgColor#}"&gt;
+		&lt;td&gt;First&lt;/td&gt;
+		&lt;td&gt;Last&lt;/td&gt;
+		&lt;td&gt;Address&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+><P
+>            Config files may also contain sections. You can load variables from
+            within a section with the added attribute
+            <I
+CLASS="EMPHASIS"
+>section</I
+>.
+			</P
+><P
+>            NOTE: <I
+CLASS="EMPHASIS"
+>Config file sections</I
+> and the built-in
+            template function called <I
+CLASS="EMPHASIS"
+>section</I
+> have nothing
+            to do with each other, they just happen to share a common naming
+            convention.
+            </P
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN783"
+></A
+><P
+><B
+>Example 7-3. function config_load with section</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>{config_load file="colors.conf" section="Customer"}
+
+&lt;html&gt;
+&lt;title&gt;{#pageTitle#}&lt;/title&gt;
+&lt;body bgcolor="{#bodyBgColor#}"&gt;
+&lt;table border="{#tableBorderSize#}" bgcolor="{#tableBgColor#}"&gt;
+	&lt;tr bgcolor="{#rowBgColor#}"&gt;
+		&lt;td&gt;First&lt;/td&gt;
+		&lt;td&gt;Last&lt;/td&gt;
+		&lt;td&gt;Address&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="language.builtin.functions.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="language.function.foreach.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Built-in Functions</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="language.builtin.functions.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>foreach,foreachelse</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

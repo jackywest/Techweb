@@ -1,0 +1,252 @@
+<HTML
+><HEAD
+><TITLE
+>Inserts</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+"><LINK
+REL="HOME"
+TITLE="Smarty - the compiling PHP template engine"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Extending Smarty With Plugins"
+HREF="plugins.html"><LINK
+REL="PREVIOUS"
+TITLE="Resources"
+HREF="plugins.resources.html"><LINK
+REL="NEXT"
+TITLE="Appendixes"
+HREF="appendixes.html"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Smarty - the compiling PHP template engine</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="plugins.resources.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 16. Extending Smarty With Plugins</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="appendixes.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="PLUGINS.INSERTS"
+>Inserts</A
+></H1
+><P
+>     Insert plugins are used to implement functions that are invoked by
+     <A
+HREF="language.function.insert.html"
+><A
+HREF="language.function.insert.html"
+><B
+CLASS="COMMAND"
+>{insert}</B
+></A
+></A
+>
+     tags in the template.
+    </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><A
+NAME="AEN3907"
+></A
+><P
+></P
+><P
+><CODE
+><CODE
+CLASS="FUNCDEF"
+>string <B
+CLASS="FUNCTION"
+>smarty_insert_<TT
+CLASS="REPLACEABLE"
+><I
+>name</I
+></TT
+></B
+></CODE
+>(array $params, object &#38;$smarty)</CODE
+></P
+><P
+></P
+></DIV
+><P
+>     The first parameter to the function is an associative array of
+     attributes passed to the insert. Either access those values directly,
+     e.g. <TT
+CLASS="VARNAME"
+>$params['start']</TT
+> or use
+     <TT
+CLASS="VARNAME"
+>extract($params)</TT
+> to import them into the symbol
+     table.
+    </P
+><P
+>     The insert function is supposed to return the result which will be
+     substituted in place of the <A
+HREF="language.function.insert.html"
+><B
+CLASS="COMMAND"
+>{insert}</B
+></A
+> tag in the
+     template.
+    </P
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN3921"
+></A
+><P
+><B
+>Example 16-11. insert plugin</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&lt;?php
+/*
+ * Smarty plugin
+ * ------------------------------------------------------------- 
+ * File:     insert.time.php
+ * Type:     time
+ * Name:     time
+ * Purpose:  Inserts current date/time according to format
+ * -------------------------------------------------------------
+ */
+function smarty_insert_time($params, &amp;$smarty)
+{
+    if (empty($params['format'])) {
+        $smarty-&#62;trigger_error("insert time: missing 'format' parameter");
+        return;
+    }
+
+    $datetime = strftime($params['format']);
+    return $datetime;
+}
+?&gt;</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="plugins.resources.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="appendixes.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Resources</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="plugins.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Appendixes</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

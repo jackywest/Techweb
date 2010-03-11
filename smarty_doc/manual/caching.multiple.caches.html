@@ -1,0 +1,315 @@
+<HTML
+><HEAD
+><TITLE
+>Multiple Caches Per Page</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+"><LINK
+REL="HOME"
+TITLE="Smarty - the compiling PHP template engine"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Caching"
+HREF="caching.html"><LINK
+REL="PREVIOUS"
+TITLE="Caching"
+HREF="caching.html"><LINK
+REL="NEXT"
+TITLE="Cache Groups"
+HREF="caching.groups.html"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Smarty - the compiling PHP template engine</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="caching.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 14. Caching</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="caching.groups.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="CACHING.MULTIPLE.CACHES"
+>Multiple Caches Per Page</A
+></H1
+><P
+>	You can have multiple cache files for a single call to display() or
+	fetch(). Let's say that a call to display('index.tpl') may have several
+	different output contents depending on some condition, and you want
+	separate caches for each one. You can do this by passing a cache_id as the
+	second parameter to the function call.
+	</P
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN3489"
+></A
+><P
+><B
+>Example 14-6. passing a cache_id to display()</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>require('Smarty.class.php');
+$smarty = new Smarty;
+
+$smarty-&#62;caching = true;
+
+$my_cache_id = $_GET['article_id'];
+
+$smarty-&#62;display('index.tpl',$my_cache_id);</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+><P
+>	Above, we are passing the variable $my_cache_id to display() as the
+	cache_id. For each unique value of $my_cache_id, a separate cache will be
+	generated for index.tpl. In this example, "article_id" was passed in the
+	URL and is used as the cache_id.
+	</P
+><DIV
+CLASS="NOTE"
+><BLOCKQUOTE
+CLASS="NOTE"
+><P
+><B
+>Technical Note: </B
+>	Be very cautious when passing values from a client (web browser) into
+	Smarty (or any PHP application.) Although the above example of using the
+	article_id from the URL looks handy, it could have bad consequences. The
+	cache_id is used to create a directory on the file system, so if the user
+	decided to pass an extremely large value for article_id, or write a script
+	that sends random article_ids at a rapid pace, this could possibly cause
+	problems at the server level. Be sure to sanitize any data passed in before
+	using it. In this instance, maybe you know the article_id has a length of
+	10 characters and is made up of alpha-numerics only, and must be a valid
+	article_id in the database. Check for this!
+	</P
+></BLOCKQUOTE
+></DIV
+><P
+>	Be sure to pass the same cache_id as the
+	second parameter to <A
+HREF="api.is.cached.html"
+>is_cached()</A
+> and
+	<A
+HREF="api.clear.cache.html"
+>clear_cache()</A
+>.
+	</P
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN3499"
+></A
+><P
+><B
+>Example 14-7. passing a cache_id to is_cached()</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>require('Smarty.class.php');
+$smarty = new Smarty;
+
+$smarty-&#62;caching = true;
+
+$my_cache_id = $_GET['article_id'];
+
+if(!$smarty-&#62;is_cached('index.tpl',$my_cache_id)) {
+	// No cache available, do variable assignments here.
+	$contents = get_database_contents();
+	$smarty-&#62;assign($contents);
+}
+
+$smarty-&#62;display('index.tpl',$my_cache_id);</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+><P
+>	You can clear all caches for a particular cache_id by passing null as the
+	first parameter to clear_cache().
+	</P
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN3503"
+></A
+><P
+><B
+>Example 14-8. clearing all caches for a particular cache_id</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>require('Smarty.class.php');
+$smarty = new Smarty;
+
+$smarty-&#62;caching = true;
+
+// clear all caches with "sports" as the cache_id
+$smarty-&#62;clear_cache(null,"sports");
+
+$smarty-&#62;display('index.tpl',"sports");</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+><P
+>	In this manner, you can "group" your caches together by giving them the
+	same cache_id.
+	</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="caching.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="caching.groups.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Caching</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="caching.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Cache Groups</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

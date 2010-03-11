@@ -1,0 +1,430 @@
+<HTML
+><HEAD
+><TITLE
+>math</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+"><LINK
+REL="HOME"
+TITLE="Smarty - the compiling PHP template engine"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Custom Functions"
+HREF="language.custom.functions.html"><LINK
+REL="PREVIOUS"
+TITLE="html_table"
+HREF="language.function.html.table.html"><LINK
+REL="NEXT"
+TITLE="mailto"
+HREF="language.function.mailto.html"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Smarty - the compiling PHP template engine</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="language.function.html.table.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 8. Custom Functions</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="language.function.mailto.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="LANGUAGE.FUNCTION.MATH"
+>math</A
+></H1
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN2088"
+></A
+><P
+></P
+><TABLE
+BORDER="1"
+CLASS="CALSTABLE"
+><THEAD
+><TR
+><TH
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>Attribute Name</TH
+><TH
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>Type</TH
+><TH
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>Required</TH
+><TH
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>Default</TH
+><TH
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Description</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>equation</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>string</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>Yes</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+><I
+CLASS="EMPHASIS"
+>n/a</I
+></TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>the equation to execute</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>format</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>string</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>No</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+><I
+CLASS="EMPHASIS"
+>n/a</I
+></TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>the format of the result (sprintf)</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>var</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>numeric</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>Yes</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+><I
+CLASS="EMPHASIS"
+>n/a</I
+></TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>equation variable value</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>assign</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>string</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>No</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+><I
+CLASS="EMPHASIS"
+>n/a</I
+></TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>template variable the output will be assigned to</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>[var ...]</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>numeric</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>Yes</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+><I
+CLASS="EMPHASIS"
+>n/a</I
+></TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>equation variable value</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+><P
+>            math allows the template designer to do math equations in the
+            template. Any numeric template variables may be used in the
+            equations, and the result is printed in place of the tag. The
+            variables used in the equation are passed as parameters, which can
+            be template variables or static values. +, -, /, *, abs, ceil, cos,
+            exp, floor, log, log10, max, min, pi, pow, rand, round, sin, sqrt,
+            srans and tan are all valid operators. Check the PHP documentation
+            for further information on these math functions.
+			</P
+><P
+>			If you supply the special "assign" attribute, the output of the
+			math function will be assigned to this template variable instead of
+			being output to the template.
+			</P
+><DIV
+CLASS="NOTE"
+><BLOCKQUOTE
+CLASS="NOTE"
+><P
+><B
+>Technical Note: </B
+>				math is an expensive function in performance due to its use of
+				the php eval() function. Doing the math in PHP is much more
+				efficient, so whenever possible do the math calculations in PHP
+				and assign the results to the template. Definately avoid
+				repetitive math function calls, like within section loops.
+            	</P
+></BLOCKQUOTE
+></DIV
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN2143"
+></A
+><P
+><B
+>Example 8-14. math</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>{* $height=4, $width=5 *}
+
+{math equation="x + y" x=$height y=$width}
+
+OUTPUT:
+
+9
+
+
+{* $row_height = 10, $row_width = 20, #col_div# = 2, assigned in template *}
+
+{math equation="height * width / division"
+      height=$row_height
+      width=$row_width
+      division=#col_div#}
+
+OUTPUT:
+
+100
+
+
+{* you can use parenthesis *}
+
+{math equation="(( x + y ) / z )" x=2 y=10 z=2}
+
+OUTPUT:
+
+6
+
+
+{* you can supply a format parameter in sprintf format *}
+
+{math equation="x + y" x=4.4444 y=5.0000 format="%.2f"}
+
+OUTPUT:
+
+9.44</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="language.function.html.table.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="language.function.mailto.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>html_table</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="language.custom.functions.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>mailto</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

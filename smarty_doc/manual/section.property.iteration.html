@@ -1,0 +1,198 @@
+<HTML
+><HEAD
+><TITLE
+>iteration</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+"><LINK
+REL="HOME"
+TITLE="Smarty - the compiling PHP template engine"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="section,sectionelse"
+HREF="language.function.section.html"><LINK
+REL="PREVIOUS"
+TITLE="index_next"
+HREF="section.property.index.next.html"><LINK
+REL="NEXT"
+TITLE="first"
+HREF="section.property.first.html"></HEAD
+><BODY
+CLASS="SECT2"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Smarty - the compiling PHP template engine</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="section.property.index.next.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="section.property.first.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="SECTION.PROPERTY.ITERATION"
+>iteration</A
+></H2
+><P
+>        	iteration is used to display the current loop iteration.
+			</P
+><P
+>			NOTE: This is not affected by the section properties start, step and
+			max, unlike the index property. Iteration also starts with 1
+			instead of 0 like index. rownum is an alias to iteration, they work
+			identical.
+			</P
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN1153"
+></A
+><P
+><B
+>Example 7-24. section property iteration</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>	{section name=customer loop=$custid start=5 step=2}
+	current loop iteration: {$smarty.section.customer.iteration}&lt;br&gt;
+	{$smarty.section.customer.index} id: {$custid[customer]}&lt;br&gt;
+	{* FYI, $custid[customer.index] and $custid[customer] are identical in meaning *}
+	{if $custid[customer.index_next] ne $custid[customer.index]}
+    	The customer id will change&lt;br&gt;
+	{/if}
+	{/section}
+
+
+	OUTPUT:
+
+	current loop iteration: 1
+	5 id: 1000&lt;br&gt;
+    	The customer id will change&lt;br&gt;
+	current loop iteration: 2
+	7 id: 1001&lt;br&gt;
+    	The customer id will change&lt;br&gt;
+	current loop iteration: 3
+	9 id: 1002&lt;br&gt;
+    	The customer id will change&lt;br&gt;</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="section.property.index.next.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="section.property.first.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>index_next</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="language.function.section.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>first</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

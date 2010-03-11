@@ -1,0 +1,303 @@
+<HTML
+><HEAD
+><TITLE
+>Prefilters/Postfilters</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+"><LINK
+REL="HOME"
+TITLE="Smarty - the compiling PHP template engine"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Extending Smarty With Plugins"
+HREF="plugins.html"><LINK
+REL="PREVIOUS"
+TITLE="Compiler Functions"
+HREF="plugins.compiler.functions.html"><LINK
+REL="NEXT"
+TITLE="Output Filters"
+HREF="plugins.outputfilters.html"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Smarty - the compiling PHP template engine</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="plugins.compiler.functions.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 16. Extending Smarty With Plugins</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="plugins.outputfilters.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="PLUGINS.PREFILTERS.POSTFILTERS"
+>Prefilters/Postfilters</A
+></H1
+><P
+>     Prefilter and postfilter plugins are very similar in concept; where
+     they differ is in the execution -- more precisely the time of their
+     execution.
+    </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><A
+NAME="AEN3797"
+></A
+><P
+></P
+><P
+><CODE
+><CODE
+CLASS="FUNCDEF"
+>string <B
+CLASS="FUNCTION"
+>smarty_prefilter_<TT
+CLASS="REPLACEABLE"
+><I
+>name</I
+></TT
+></B
+></CODE
+>(string $source, object &#38;$smarty)</CODE
+></P
+><P
+></P
+></DIV
+><P
+>     Prefilters are used to process the source of the template immediately
+     before compilation. The first parameter to the prefilter function is
+     the template source, possibly modified by some other prefilters. The
+     plugin is supposed to return the modified source.  Note that this
+     source is not saved anywhere, it is only used for compilation.
+    </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><A
+NAME="AEN3807"
+></A
+><P
+></P
+><P
+><CODE
+><CODE
+CLASS="FUNCDEF"
+>string <B
+CLASS="FUNCTION"
+>smarty_postfilter_<TT
+CLASS="REPLACEABLE"
+><I
+>name</I
+></TT
+></B
+></CODE
+>(string $compiled, object &#38;$smarty)</CODE
+></P
+><P
+></P
+></DIV
+><P
+>     Postfilters are used to process the compiled output of the template
+     (the PHP code) immediately after the compilation is done but before the
+     compiled template is saved to the filesystem. The first parameter to
+     the postfilter function is the compiled template code, possibly
+     modified by other postfilters. The plugin is supposed to return the
+     modified version of this code.
+    </P
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN3817"
+></A
+><P
+><B
+>Example 16-7. prefilter plugin</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&lt;?php
+/*
+ * Smarty plugin
+ * -------------------------------------------------------------
+ * File:     prefilter.pre01.php
+ * Type:     prefilter
+ * Name:     pre01
+ * Purpose:  Convert html tags to be lowercase.
+ * -------------------------------------------------------------
+ */
+ function smarty_prefilter_pre01($source, &#38;$smarty)
+ {
+     return preg_replace('!&lt;(\w+)[^&gt;]+&gt;!e', 'strtolower("$1")', $source);
+ }
+?&gt;</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+><P
+></P
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN3821"
+></A
+><P
+><B
+>Example 16-8. postfilter plugin</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&lt;?php
+/*
+ * Smarty plugin
+ * -------------------------------------------------------------
+ * File:     postfilter.post01.php
+ * Type:     postfilter
+ * Name:     post01
+ * Purpose:  Output code that lists all current template vars.
+ * -------------------------------------------------------------
+ */
+ function smarty_postfilter_post01($compiled, &#38;$smarty)
+ {
+     $compiled = "&lt;pre&gt;\n&lt;?php print_r(\$this-&gt;get_template_vars()); ?&gt;\n&lt;/pre&gt;" . $compiled;
+     return $compiled;
+ }
+?&gt;</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="plugins.compiler.functions.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="plugins.outputfilters.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Compiler Functions</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="plugins.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Output Filters</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,406 @@
+<HTML
+><HEAD
+><TITLE
+>insert</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+"><LINK
+REL="HOME"
+TITLE="Smarty - the compiling PHP template engine"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Built-in Functions"
+HREF="language.builtin.functions.html"><LINK
+REL="PREVIOUS"
+TITLE="include_php"
+HREF="language.function.include.php.html"><LINK
+REL="NEXT"
+TITLE="if,elseif,else"
+HREF="language.function.if.html"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Smarty - the compiling PHP template engine</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="language.function.include.php.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 7. Built-in Functions</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="language.function.if.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="LANGUAGE.FUNCTION.INSERT"
+>insert</A
+></H1
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN957"
+></A
+><P
+></P
+><TABLE
+BORDER="1"
+CLASS="CALSTABLE"
+><THEAD
+><TR
+><TH
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>Attribute Name</TH
+><TH
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>Type</TH
+><TH
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>Required</TH
+><TH
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>Default</TH
+><TH
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Description</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>name</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>string</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>Yes</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+><I
+CLASS="EMPHASIS"
+>n/a</I
+></TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>The name of the insert function (insert_name)</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>assign</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>string</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>No</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+><I
+CLASS="EMPHASIS"
+>n/a</I
+></TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>The name of the template variable the output will
+						be assigned to</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>script</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>string</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>No</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+><I
+CLASS="EMPHASIS"
+>n/a</I
+></TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>The name of the php script that is included before
+						the insert function is called</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>[var ...]</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>[var type]</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>No</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+><I
+CLASS="EMPHASIS"
+>n/a</I
+></TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>variable to pass to insert function</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+><P
+>			Insert tags work much like include tags, except that insert tags
+			are not cached when you have template <A
+HREF="caching.html"
+>caching</A
+> enabled. They will be
+			executed on every invocation of the template.
+			</P
+><P
+>             Let's say you have a template with a banner slot at the top of
+             the page. The banner can contain any mixture of HTML, images,
+             flash, etc. so we can't just use a static link here, and we
+             don't want this contents cached with the page. In comes the
+             insert tag: the template knows #banner_location_id# and
+             #site_id# values (gathered from a config file), and needs to
+             call a function to get the banner contents.
+			</P
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN1003"
+></A
+><P
+><B
+>Example 7-10. function insert</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>{* example of fetching a banner *}
+{insert name="getBanner" lid=#banner_location_id# sid=#site_id#}</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+><P
+>			In this example, we are using the name "getBanner" and passing the
+			parameters #banner_location_id# and #site_id#. Smarty will look
+			for a function named insert_getBanner() in your PHP application, passing
+			the values of #banner_location_id# and #site_id# as the first argument
+			in an associative array. All insert function names in
+			your application must be prepended with "insert_" to remedy possible
+			function name-space conflicts. Your insert_getBanner() function should
+			do something with the passed values and return the results. These results
+			are then displayed in the template in place of the insert tag.
+			In this example, Smarty would call this function:
+			insert_getBanner(array("lid" =&#62; "12345","sid" =&#62; "67890"));
+			and display the returned results in place of the insert tag.
+			</P
+><P
+>			If you supply the "assign" attribute, the output of the insert tag
+			will be assigned to this template variable instead of being output
+			to the template. NOTE: assigning the output to a template variable
+			isn't too useful with caching enabled.
+			</P
+><P
+>			If you supply the "script" attribute, this php script will be
+			included (only once) before the insert function is executed. This
+			is the case where the insert function may not exist yet, and a php
+			script must be included first to make it work. The path can be
+			either absolute, or relative to $trusted_dir. When security is
+			enabled, the script must reside in $trusted_dir.
+			</P
+><P
+>			The Smarty object is passed as the second argument. This way you
+			can reference and modify information in the Smarty object from
+			within the insert function.
+			</P
+><DIV
+CLASS="NOTE"
+><BLOCKQUOTE
+CLASS="NOTE"
+><P
+><B
+>Technical Note: </B
+>            It is possible to have portions of the template not
+            cached. If you have <A
+HREF="caching.html"
+>caching</A
+>
+            turned on, insert tags will not be cached. They will run
+            dynamically every time the page is created, even within cached
+            pages. This works good for things like banners, polls, live
+            weather, search results, user feedback areas, etc.
+			</P
+></BLOCKQUOTE
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="language.function.include.php.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="language.function.if.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>include_php</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="language.builtin.functions.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>if,elseif,else</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

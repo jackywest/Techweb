@@ -1,0 +1,221 @@
+<HTML
+><HEAD
+><TITLE
+>strip</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+"><LINK
+REL="HOME"
+TITLE="Smarty - the compiling PHP template engine"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Built-in Functions"
+HREF="language.builtin.functions.html"><LINK
+REL="PREVIOUS"
+TITLE="total"
+HREF="section.property.total.html"><LINK
+REL="NEXT"
+TITLE="Custom Functions"
+HREF="language.custom.functions.html"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Smarty - the compiling PHP template engine</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="section.property.total.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 7. Built-in Functions</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="language.custom.functions.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="LANGUAGE.FUNCTION.STRIP"
+>strip</A
+></H1
+><P
+>			Many times web designers run into the issue where white space and
+			carriage returns affect the output of the rendered HTML (browser
+			"features"), so you must run all your tags together in the template
+			to get the desired results. This usually ends up in unreadable or
+			unmanageable templates.
+			</P
+><P
+>			Anything within {strip}{/strip} tags in Smarty are stripped of the
+			extra spaces or carriage returns at the beginnings and ends of the
+			lines before they are displayed. This way you can keep your
+			templates readable, and not worry about extra white space causing
+			problems.
+			</P
+><DIV
+CLASS="NOTE"
+><BLOCKQUOTE
+CLASS="NOTE"
+><P
+><B
+>Technical Note: </B
+>			{strip}{/strip} does not affect the contents of template variables.
+			See the <A
+HREF="language.modifier.strip.html"
+>strip modifier
+			function</A
+>.
+			</P
+></BLOCKQUOTE
+></DIV
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN1202"
+></A
+><P
+><B
+>Example 7-31. strip tags</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>{* the following will be all run into one line upon output *}
+{strip}
+&lt;table border=0&gt;
+	&lt;tr&gt;
+		&lt;td&gt;
+			&lt;A HREF="{$url}"&gt;
+			&lt;font color="red"&gt;This is a test&lt;/font&gt;
+			&lt;/A&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;
+{/strip}
+
+
+OUTPUT:
+
+&lt;table border=0&gt;&lt;tr&gt;&lt;td&gt;&lt;A HREF="http://my.domain.com"&gt;&lt;font color="red"&gt;This is a test&lt;/font&gt;&lt;/A&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+><P
+>		Notice that in the above example, all the lines begin and end
+		with HTML tags. Be aware that all the lines are run together.
+		If you have plain text at the beginning or end of any line,
+		they will be run together, and may not be desired results.
+		</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="section.property.total.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="language.custom.functions.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>total</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="language.builtin.functions.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Custom Functions</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,787 @@
+<HTML
+><HEAD
+><TITLE
+>html_select_time</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+"><LINK
+REL="HOME"
+TITLE="Smarty - the compiling PHP template engine"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Custom Functions"
+HREF="language.custom.functions.html"><LINK
+REL="PREVIOUS"
+TITLE="html_select_date"
+HREF="language.function.html.select.date.html"><LINK
+REL="NEXT"
+TITLE="html_table"
+HREF="language.function.html.table.html"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Smarty - the compiling PHP template engine</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="language.function.html.select.date.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 8. Custom Functions</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="language.function.html.table.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="LANGUAGE.FUNCTION.HTML.SELECT.TIME"
+>html_select_time</A
+></H1
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN1906"
+></A
+><P
+></P
+><TABLE
+BORDER="1"
+CLASS="CALSTABLE"
+><THEAD
+><TR
+><TH
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>Attribute Name</TH
+><TH
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>Type</TH
+><TH
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>Required</TH
+><TH
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>Default</TH
+><TH
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Description</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>prefix</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>string</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>No</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>Time_</TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>what to prefix the var name with</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>time</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>timestamp</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>No</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>current time</TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>what date/time to use</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>display_hours</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>boolean</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>No</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>true</TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>whether or not to display hours</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>display_minutes</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>boolean</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>No</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>true</TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>whether or not to display minutes</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>display_seconds</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>boolean</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>No</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>true</TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>whether or not to display seconds</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>display_meridian</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>boolean</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>No</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>true</TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>whether or not to display meridian (am/pm)</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>use_24_hours</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>boolean</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>No</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>true</TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>whether or not to use 24 hour clock</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>minute_interval</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>integer</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>No</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>1</TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>number interval in minute dropdown</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>second_interval</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>integer</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>No</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>1</TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>number interval in second dropdown</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>field_array</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>string</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>No</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>n/a</TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>outputs values to array of this name</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>all_extra</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>string</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>No</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>null</TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>adds extra attributes to select/input tags if
+						given</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>hour_extra</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>string</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>No</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>null</TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>adds extra attributes to select/input tags if
+						given</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>minute_extra</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>string</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>No</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>null</TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>adds extra attributes to select/input tags if
+						given</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>second_extra</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>string</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>No</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>null</TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>adds extra attributes to select/input tags if
+						given</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>meridian_extra</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>string</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>No</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>null</TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>adds extra attributes to select/input tags if
+						given</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+><P
+>			html_select_time is a custom function that creates time dropdowns
+			for you. It can display any or all of hour, minute, second and
+            meridian.
+			</P
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN2012"
+></A
+><P
+><B
+>Example 8-12. html_select_time</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>{html_select_time use_24_hours=true}
+
+
+OUTPUT:
+
+&lt;select name="Time_Hour"&gt;
+&lt;option value="00"&gt;00&lt;/option&gt;
+&lt;option value="01"&gt;01&lt;/option&gt;
+&lt;option value="02"&gt;02&lt;/option&gt;
+&lt;option value="03"&gt;03&lt;/option&gt;
+&lt;option value="04"&gt;04&lt;/option&gt;
+&lt;option value="05"&gt;05&lt;/option&gt;
+&lt;option value="06"&gt;06&lt;/option&gt;
+&lt;option value="07"&gt;07&lt;/option&gt;
+&lt;option value="08"&gt;08&lt;/option&gt;
+&lt;option value="09" selected&gt;09&lt;/option&gt;
+&lt;option value="10"&gt;10&lt;/option&gt;
+&lt;option value="11"&gt;11&lt;/option&gt;
+&lt;option value="12"&gt;12&lt;/option&gt;
+&lt;option value="13"&gt;13&lt;/option&gt;
+&lt;option value="14"&gt;14&lt;/option&gt;
+&lt;option value="15"&gt;15&lt;/option&gt;
+&lt;option value="16"&gt;16&lt;/option&gt;
+&lt;option value="17"&gt;17&lt;/option&gt;
+&lt;option value="18"&gt;18&lt;/option&gt;
+&lt;option value="19"&gt;19&lt;/option&gt;
+&lt;option value="20"&gt;20&lt;/option&gt;
+&lt;option value="21"&gt;21&lt;/option&gt;
+&lt;option value="22"&gt;22&lt;/option&gt;
+&lt;option value="23"&gt;23&lt;/option&gt;
+&lt;/select&gt;
+&lt;select name="Time_Minute"&gt;
+&lt;option value="00"&gt;00&lt;/option&gt;
+&lt;option value="01"&gt;01&lt;/option&gt;
+&lt;option value="02"&gt;02&lt;/option&gt;
+&lt;option value="03"&gt;03&lt;/option&gt;
+&lt;option value="04"&gt;04&lt;/option&gt;
+&lt;option value="05"&gt;05&lt;/option&gt;
+&lt;option value="06"&gt;06&lt;/option&gt;
+&lt;option value="07"&gt;07&lt;/option&gt;
+&lt;option value="08"&gt;08&lt;/option&gt;
+&lt;option value="09"&gt;09&lt;/option&gt;
+&lt;option value="10"&gt;10&lt;/option&gt;
+&lt;option value="11"&gt;11&lt;/option&gt;
+&lt;option value="12"&gt;12&lt;/option&gt;
+&lt;option value="13"&gt;13&lt;/option&gt;
+&lt;option value="14"&gt;14&lt;/option&gt;
+&lt;option value="15"&gt;15&lt;/option&gt;
+&lt;option value="16"&gt;16&lt;/option&gt;
+&lt;option value="17"&gt;17&lt;/option&gt;
+&lt;option value="18"&gt;18&lt;/option&gt;
+&lt;option value="19"&gt;19&lt;/option&gt;
+&lt;option value="20" selected&gt;20&lt;/option&gt;
+&lt;option value="21"&gt;21&lt;/option&gt;
+&lt;option value="22"&gt;22&lt;/option&gt;
+&lt;option value="23"&gt;23&lt;/option&gt;
+&lt;option value="24"&gt;24&lt;/option&gt;
+&lt;option value="25"&gt;25&lt;/option&gt;
+&lt;option value="26"&gt;26&lt;/option&gt;
+&lt;option value="27"&gt;27&lt;/option&gt;
+&lt;option value="28"&gt;28&lt;/option&gt;
+&lt;option value="29"&gt;29&lt;/option&gt;
+&lt;option value="30"&gt;30&lt;/option&gt;
+&lt;option value="31"&gt;31&lt;/option&gt;
+&lt;option value="32"&gt;32&lt;/option&gt;
+&lt;option value="33"&gt;33&lt;/option&gt;
+&lt;option value="34"&gt;34&lt;/option&gt;
+&lt;option value="35"&gt;35&lt;/option&gt;
+&lt;option value="36"&gt;36&lt;/option&gt;
+&lt;option value="37"&gt;37&lt;/option&gt;
+&lt;option value="38"&gt;38&lt;/option&gt;
+&lt;option value="39"&gt;39&lt;/option&gt;
+&lt;option value="40"&gt;40&lt;/option&gt;
+&lt;option value="41"&gt;41&lt;/option&gt;
+&lt;option value="42"&gt;42&lt;/option&gt;
+&lt;option value="43"&gt;43&lt;/option&gt;
+&lt;option value="44"&gt;44&lt;/option&gt;
+&lt;option value="45"&gt;45&lt;/option&gt;
+&lt;option value="46"&gt;46&lt;/option&gt;
+&lt;option value="47"&gt;47&lt;/option&gt;
+&lt;option value="48"&gt;48&lt;/option&gt;
+&lt;option value="49"&gt;49&lt;/option&gt;
+&lt;option value="50"&gt;50&lt;/option&gt;
+&lt;option value="51"&gt;51&lt;/option&gt;
+&lt;option value="52"&gt;52&lt;/option&gt;
+&lt;option value="53"&gt;53&lt;/option&gt;
+&lt;option value="54"&gt;54&lt;/option&gt;
+&lt;option value="55"&gt;55&lt;/option&gt;
+&lt;option value="56"&gt;56&lt;/option&gt;
+&lt;option value="57"&gt;57&lt;/option&gt;
+&lt;option value="58"&gt;58&lt;/option&gt;
+&lt;option value="59"&gt;59&lt;/option&gt;
+&lt;/select&gt;
+&lt;select name="Time_Second"&gt;
+&lt;option value="00"&gt;00&lt;/option&gt;
+&lt;option value="01"&gt;01&lt;/option&gt;
+&lt;option value="02"&gt;02&lt;/option&gt;
+&lt;option value="03"&gt;03&lt;/option&gt;
+&lt;option value="04"&gt;04&lt;/option&gt;
+&lt;option value="05"&gt;05&lt;/option&gt;
+&lt;option value="06"&gt;06&lt;/option&gt;
+&lt;option value="07"&gt;07&lt;/option&gt;
+&lt;option value="08"&gt;08&lt;/option&gt;
+&lt;option value="09"&gt;09&lt;/option&gt;
+&lt;option value="10"&gt;10&lt;/option&gt;
+&lt;option value="11"&gt;11&lt;/option&gt;
+&lt;option value="12"&gt;12&lt;/option&gt;
+&lt;option value="13"&gt;13&lt;/option&gt;
+&lt;option value="14"&gt;14&lt;/option&gt;
+&lt;option value="15"&gt;15&lt;/option&gt;
+&lt;option value="16"&gt;16&lt;/option&gt;
+&lt;option value="17"&gt;17&lt;/option&gt;
+&lt;option value="18"&gt;18&lt;/option&gt;
+&lt;option value="19"&gt;19&lt;/option&gt;
+&lt;option value="20"&gt;20&lt;/option&gt;
+&lt;option value="21"&gt;21&lt;/option&gt;
+&lt;option value="22"&gt;22&lt;/option&gt;
+&lt;option value="23" selected&gt;23&lt;/option&gt;
+&lt;option value="24"&gt;24&lt;/option&gt;
+&lt;option value="25"&gt;25&lt;/option&gt;
+&lt;option value="26"&gt;26&lt;/option&gt;
+&lt;option value="27"&gt;27&lt;/option&gt;
+&lt;option value="28"&gt;28&lt;/option&gt;
+&lt;option value="29"&gt;29&lt;/option&gt;
+&lt;option value="30"&gt;30&lt;/option&gt;
+&lt;option value="31"&gt;31&lt;/option&gt;
+&lt;option value="32"&gt;32&lt;/option&gt;
+&lt;option value="33"&gt;33&lt;/option&gt;
+&lt;option value="34"&gt;34&lt;/option&gt;
+&lt;option value="35"&gt;35&lt;/option&gt;
+&lt;option value="36"&gt;36&lt;/option&gt;
+&lt;option value="37"&gt;37&lt;/option&gt;
+&lt;option value="38"&gt;38&lt;/option&gt;
+&lt;option value="39"&gt;39&lt;/option&gt;
+&lt;option value="40"&gt;40&lt;/option&gt;
+&lt;option value="41"&gt;41&lt;/option&gt;
+&lt;option value="42"&gt;42&lt;/option&gt;
+&lt;option value="43"&gt;43&lt;/option&gt;
+&lt;option value="44"&gt;44&lt;/option&gt;
+&lt;option value="45"&gt;45&lt;/option&gt;
+&lt;option value="46"&gt;46&lt;/option&gt;
+&lt;option value="47"&gt;47&lt;/option&gt;
+&lt;option value="48"&gt;48&lt;/option&gt;
+&lt;option value="49"&gt;49&lt;/option&gt;
+&lt;option value="50"&gt;50&lt;/option&gt;
+&lt;option value="51"&gt;51&lt;/option&gt;
+&lt;option value="52"&gt;52&lt;/option&gt;
+&lt;option value="53"&gt;53&lt;/option&gt;
+&lt;option value="54"&gt;54&lt;/option&gt;
+&lt;option value="55"&gt;55&lt;/option&gt;
+&lt;option value="56"&gt;56&lt;/option&gt;
+&lt;option value="57"&gt;57&lt;/option&gt;
+&lt;option value="58"&gt;58&lt;/option&gt;
+&lt;option value="59"&gt;59&lt;/option&gt;
+&lt;/select&gt;
+&lt;select name="Time_Meridian"&gt;
+&lt;option value="am" selected&gt;AM&lt;/option&gt;
+&lt;option value="pm"&gt;PM&lt;/option&gt;
+&lt;/select&gt;</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="language.function.html.select.date.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="language.function.html.table.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>html_select_date</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="language.custom.functions.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>html_table</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,247 @@
+<HTML
+><HEAD
+><TITLE
+>What is Smarty?</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+"><LINK
+REL="HOME"
+TITLE="Smarty - the compiling PHP template engine"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Getting Started"
+HREF="getting.started.html"><LINK
+REL="PREVIOUS"
+TITLE="Getting Started"
+HREF="getting.started.html"><LINK
+REL="NEXT"
+TITLE="Installation"
+HREF="installation.html"></HEAD
+><BODY
+CLASS="CHAPTER"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Smarty - the compiling PHP template engine</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="getting.started.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="installation.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="CHAPTER"
+><H1
+><A
+NAME="WHAT.IS.SMARTY"
+>Chapter 1. What is Smarty?</A
+></H1
+><P
+>	Smarty is a template engine for PHP. More specifically, it facilitates a
+	manageable way to separate application logic and content from its
+	presentation. This is best described in a situation where the application
+	programmer and the template designer play different roles, or in most cases
+	are not the same person. For example, let's say you are creating a web page
+	that is displaying a newspaper article. The article headline, tagline,
+	author and body are content elements, they contain no information about how
+	they will be presented. They are passed into Smarty by the application,
+	then the template designer edits the templates and uses a combination of
+	HTML tags and template tags to format the presentation of these elements
+	(HTML tables, background colors, font sizes, style sheets, etc.) One day
+	the programmer needs to change the way the article content is retrieved (a
+	change in application logic.) This change does not affect the template
+	designer, the content will still arrive in the template exactly the same.
+	Likewise, if the template designer wants to completely redesign the
+	templates, this requires no changes to the application logic. Therefore,
+	the programmer can make changes to the application logic without the need
+	to restructure templates, and the template designer can make changes to
+	templates without breaking application logic.
+	</P
+><P
+>	Now for a short word on what Smarty does NOT do. Smarty does not attempt to
+	completely separate logic from the templates. There is no problem with
+	logic in your templates under the condition that this logic is strictly for
+	presentation. A word of advice: keep application logic out of the
+	templates, and presentation logic out of the application. This will most
+	definately keep things manageable and scalable for the foreseeable future.
+	</P
+><P
+>	One of the unique aspects about Smarty is the template compling. This means
+	Smarty reads the template files and creates PHP scripts from them. Once
+	they are created, they are executed from then on. Therefore there is no
+	costly template file parsing for each request, and each template can take
+	full advantage of PHP compiler cache solutions such as Zend Accelerator
+	(http://www.zend.com) or PHP Accelerator
+	(http://www.php-accelerator.co.uk).
+   </P
+><P
+>    Some of Smarty's features:
+   </P
+><P
+></P
+><UL
+><LI
+><P
+>It is extremely fast.</P
+></LI
+><LI
+><P
+>It is efficient since the PHP parser does the
+      dirty work.</P
+></LI
+><LI
+><P
+>No template parsing overhead, only compiles once.</P
+></LI
+><LI
+><P
+>It is smart about recompiling only the template
+      files that have changed.</P
+></LI
+><LI
+><P
+>You can make <A
+HREF="language.custom.functions.html"
+>custom
+       functions</A
+> and custom <A
+HREF="language.modifiers.html"
+>variable
+       modifiers</A
+>, so the template language is extremely extensible.</P
+></LI
+><LI
+><P
+>Configurable template delimiter tag syntax, so you can use
+      {}, {{}}, &lt;!--{}--&gt;, etc.</P
+></LI
+><LI
+><P
+>The if/elseif/else/endif constructs are passed to the
+      PHP parser, so the {if ...} expression syntax can be as simple or as complex
+      as you like.</P
+></LI
+><LI
+><P
+>Unlimited nesting of sections, ifs, etc. allowed.</P
+></LI
+><LI
+><P
+>It is possible to embed PHP code right in your template files,
+      although this may not be needed (nor recommended)
+      since the engine is so customizable.</P
+></LI
+><LI
+><P
+>Built-in caching support</P
+></LI
+><LI
+><P
+>Arbitrary template sources</P
+></LI
+><LI
+><P
+>Custom cache handling functions</P
+></LI
+><LI
+><P
+>Plugin architecture</P
+></LI
+></UL
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="getting.started.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="installation.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Getting Started</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="getting.started.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Installation</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

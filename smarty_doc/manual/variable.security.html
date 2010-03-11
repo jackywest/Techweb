@@ -1,0 +1,177 @@
+<HTML
+><HEAD
+><TITLE
+>$security</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+"><LINK
+REL="HOME"
+TITLE="Smarty - the compiling PHP template engine"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Variables"
+HREF="api.variables.html"><LINK
+REL="PREVIOUS"
+TITLE="$php_handling"
+HREF="variable.php.handling.html"><LINK
+REL="NEXT"
+TITLE="$secure_dir"
+HREF="variable.secure.dir.html"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Smarty - the compiling PHP template engine</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="variable.php.handling.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 12. Variables</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="variable.secure.dir.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="VARIABLE.SECURITY"
+>$security</A
+></H1
+><P
+>       $security true/false, default is false. Security is good for
+       situations when you have untrusted parties editing the templates
+       (via ftp for example) and you want to reduce the risk of system
+       security compromises through the template language. Turning on
+       security enforces the following rules to the template language,
+       unless specifially overridden with $security_settings:
+      </P
+><P
+></P
+><UL
+><LI
+><P
+>If $php_handling is set to SMARTY_PHP_ALLOW, this is
+         implicitly changed to SMARTY_PHP_PASSTHRU</P
+></LI
+><LI
+><P
+>PHP functions are not allowed in IF statements,
+         except those specified in the $security_settings</P
+></LI
+><LI
+><P
+>templates can only be included from directories
+         listed in the $secure_dir array</P
+></LI
+><LI
+><P
+>local files can only be fetched from directories
+         listed in the $secure_dir array using {fetch}</P
+></LI
+><LI
+><P
+>{php}{/php} tags are not allowed</P
+></LI
+><LI
+><P
+>PHP functions are not allowed as modifiers, except
+         those specified in the $security_settings</P
+></LI
+></UL
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="variable.php.handling.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="variable.secure.dir.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>$php_handling</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="api.variables.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>$secure_dir</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

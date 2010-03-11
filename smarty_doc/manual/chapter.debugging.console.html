@@ -1,0 +1,184 @@
+<HTML
+><HEAD
+><TITLE
+>Debugging Console</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+"><LINK
+REL="HOME"
+TITLE="Smarty - the compiling PHP template engine"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Smarty For Template Designers"
+HREF="smarty.for.designers.html"><LINK
+REL="PREVIOUS"
+TITLE="Config Files"
+HREF="config.files.html"><LINK
+REL="NEXT"
+TITLE="Smarty For Programmers"
+HREF="smarty.for.programmers.html"></HEAD
+><BODY
+CLASS="CHAPTER"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Smarty - the compiling PHP template engine</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="config.files.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="smarty.for.programmers.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="CHAPTER"
+><H1
+><A
+NAME="CHAPTER.DEBUGGING.CONSOLE"
+>Chapter 10. Debugging Console</A
+></H1
+><P
+>	There is a debugging console included with Smarty. The console informs you
+	of all the included templates, assigned variables and config file variables
+	for the current invocation of the template. A template named "debug.tpl" is
+	included with the distribution of Smarty which controls the formatting of
+	the console. Set $debugging to true in Smarty, and if needed set $debug_tpl
+	to the template resource path for debug.tpl (this is in SMARTY_DIR by
+	default.) When you load the page, a javascript console window should pop up
+	and give you the names of all the included templates and assigned variables
+	for the current page. To see the available variables for a particular
+	templates, see the <A
+HREF="language.function.debug.html"
+>{debug}</A
+>
+	template function. To disable the debugging console, set $debugging to
+	false. You can also temporarily turn on the debugging console by putting
+	SMARTY_DEBUG in the URL if you enable this option with <A
+HREF="variable.debugging.ctrl.html"
+>$debugging_ctrl</A
+>.
+   </P
+><DIV
+CLASS="NOTE"
+><BLOCKQUOTE
+CLASS="NOTE"
+><P
+><B
+>Technical Note: </B
+>     The debugging console does not work when you use the fetch()
+     API, only when using display(). It is a set of javascript statements added
+     to the very bottom of the generated template. If you do not like javascript,
+     you can edit the debug.tpl template to format the output however you like.
+     Debug data is not cached and debug.tpl info is not included in the output of
+     the debug console.
+    </P
+></BLOCKQUOTE
+></DIV
+><DIV
+CLASS="NOTE"
+><BLOCKQUOTE
+CLASS="NOTE"
+><P
+><B
+>Note: </B
+>     The load times of each template and config file are in seconds, or
+     fractions thereof.
+    </P
+></BLOCKQUOTE
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="config.files.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="smarty.for.programmers.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Config Files</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="smarty.for.designers.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Smarty For Programmers</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

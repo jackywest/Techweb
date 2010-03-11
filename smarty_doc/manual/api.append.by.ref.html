@@ -1,0 +1,224 @@
+<HTML
+><HEAD
+><TITLE
+>append_by_ref</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+"><LINK
+REL="HOME"
+TITLE="Smarty - the compiling PHP template engine"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Methods"
+HREF="api.functions.html"><LINK
+REL="PREVIOUS"
+TITLE="Methods"
+HREF="api.functions.html"><LINK
+REL="NEXT"
+TITLE="assign"
+HREF="api.assign.html"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Smarty - the compiling PHP template engine</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="api.functions.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 13. Methods</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="api.assign.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="API.APPEND.BY.REF"
+>append_by_ref</A
+></H1
+><DIV
+CLASS="FUNCSYNOPSIS"
+><A
+NAME="AEN2931"
+></A
+><P
+></P
+><P
+><CODE
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FUNCTION"
+>append_by_ref</B
+></CODE
+>(string varname, mixed var)</CODE
+></P
+><P
+><CODE
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FUNCTION"
+>append_by_ref</B
+></CODE
+>(string varname, mixed var, boolean merge)</CODE
+></P
+><P
+></P
+></DIV
+><P
+>	   This is used to append values to the templates by reference.
+	   If you append a variable by reference then change its
+       value, the appended value sees the change as well. For objects, 
+       append_by_ref() also avoids an in-memory copy of the appended object.
+       See the PHP manual on variable referencing for an in-depth
+	   explanation. If you pass the optional third parameter of true,
+       the value will be merged with the current array instead of appended.
+      </P
+><DIV
+CLASS="NOTE"
+><BLOCKQUOTE
+CLASS="NOTE"
+><P
+><B
+>Technical Note: </B
+>	  The merge parameter respects array keys, so if you merge two
+	  numerically indexed arrays, they may overwrite each other or result in
+	  non-sequential keys. This is unlike the array_merge() function of PHP
+	  which wipes out numerical keys and renumbers them.
+	  </P
+></BLOCKQUOTE
+></DIV
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN2952"
+></A
+><P
+><B
+>Example 13-2. append_by_ref</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>// appending name/value pairs
+$smarty-&#62;append_by_ref("Name",$myname);
+$smarty-&#62;append_by_ref("Address",$address);</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="api.functions.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="api.assign.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Methods</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="api.functions.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>assign</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

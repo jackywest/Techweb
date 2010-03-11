@@ -1,0 +1,460 @@
+<HTML
+><HEAD
+><TITLE
+>foreach,foreachelse</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+"><LINK
+REL="HOME"
+TITLE="Smarty - the compiling PHP template engine"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Built-in Functions"
+HREF="language.builtin.functions.html"><LINK
+REL="PREVIOUS"
+TITLE="config_load"
+HREF="language.function.config.load.html"><LINK
+REL="NEXT"
+TITLE="include"
+HREF="language.function.include.html"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Smarty - the compiling PHP template engine</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="language.function.config.load.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 7. Built-in Functions</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="language.function.include.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="LANGUAGE.FUNCTION.FOREACH"
+>foreach,foreachelse</A
+></H1
+><DIV
+CLASS="INFORMALTABLE"
+><A
+NAME="AEN788"
+></A
+><P
+></P
+><TABLE
+BORDER="1"
+CLASS="CALSTABLE"
+><THEAD
+><TR
+><TH
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>Attribute Name</TH
+><TH
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>Type</TH
+><TH
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>Required</TH
+><TH
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>Default</TH
+><TH
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Description</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>from</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>string</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>Yes</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+><I
+CLASS="EMPHASIS"
+>n/a</I
+></TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>The name of the array you are looping through</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>item</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>string</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>Yes</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+><I
+CLASS="EMPHASIS"
+>n/a</I
+></TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>The name of the variable that is the current
+						element</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>key</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>string</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>No</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+><I
+CLASS="EMPHASIS"
+>n/a</I
+></TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>The name of the variable that is the current key</TD
+></TR
+><TR
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>name</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>string</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+>No</TD
+><TD
+WIDTH="20%"
+ALIGN="CENTER"
+VALIGN="TOP"
+><I
+CLASS="EMPHASIS"
+>n/a</I
+></TD
+><TD
+WIDTH="20%"
+ALIGN="LEFT"
+VALIGN="TOP"
+>The name of the foreach loop for accessing
+						foreach properties</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+><P
+>			<I
+CLASS="EMPHASIS"
+>foreach</I
+> loops are an alternative to
+			<I
+CLASS="EMPHASIS"
+>section</I
+> loops. <I
+CLASS="EMPHASIS"
+>foreach</I
+> is
+			used to loop over a single associative array. The syntax for
+			<I
+CLASS="EMPHASIS"
+>foreach</I
+> is much easier than
+			<I
+CLASS="EMPHASIS"
+>section</I
+>, but as a tradeoff it can only be used
+			for a single array. <I
+CLASS="EMPHASIS"
+>foreach</I
+> tags must be
+			paired with <I
+CLASS="EMPHASIS"
+>/foreach</I
+> tags. Required parameters
+			are <I
+CLASS="EMPHASIS"
+>from</I
+> and <I
+CLASS="EMPHASIS"
+>item</I
+>. The
+			name of the foreach loop can be anything you like, made up of
+			letters, numbers and underscores. <I
+CLASS="EMPHASIS"
+>foreach</I
+>
+			loops can be nested, and the nested foreach names must be unique
+			from each other. The <I
+CLASS="EMPHASIS"
+>from</I
+> variable (usually an
+			array of values) determines the number of times
+			<I
+CLASS="EMPHASIS"
+>foreach</I
+> will loop.
+			<I
+CLASS="EMPHASIS"
+>foreachelse</I
+> is executed when there are no
+			values in the <I
+CLASS="EMPHASIS"
+>from</I
+> variable.
+			</P
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN846"
+></A
+><P
+><B
+>Example 7-4. foreach</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&#13;{* this example will print out all the values of the $custid array *}
+{foreach from=$custid item=curr_id}
+	id: {$curr_id}&lt;br&gt;
+{/foreach}
+
+OUTPUT:
+
+id: 1000&lt;br&gt;
+id: 1001&lt;br&gt;
+id: 1002&lt;br&gt;</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN849"
+></A
+><P
+><B
+>Example 7-5. foreach key</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>{* The key contains the key for each looped value
+
+assignment looks like this:
+
+$smarty-&#62;assign("contacts", array(array("phone" =&gt; "1", "fax" =&gt; "2", "cell" =&gt; "3"),
+      array("phone" =&gt; "555-4444", "fax" =&gt; "555-3333", "cell" =&gt; "760-1234")));
+
+*}
+
+{foreach name=outer item=contact from=$contacts}
+  {foreach key=key item=item from=$contact}
+    {$key}: {$item}&lt;br&gt;
+  {/foreach}
+{/foreach}
+
+OUTPUT:
+
+phone: 1&lt;br&gt;
+fax: 2&lt;br&gt;
+cell: 3&lt;br&gt;
+phone: 555-4444&lt;br&gt;
+fax: 555-3333&lt;br&gt;
+cell: 760-1234&lt;br&gt;</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="language.function.config.load.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="language.function.include.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>config_load</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="language.builtin.functions.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>include</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

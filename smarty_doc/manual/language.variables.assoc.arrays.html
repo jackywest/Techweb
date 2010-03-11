@@ -1,0 +1,197 @@
+<HTML
+><HEAD
+><TITLE
+>Associative arrays</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+"><LINK
+REL="HOME"
+TITLE="Smarty - the compiling PHP template engine"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Variables assigned from PHP"
+HREF="language.variables.html#LANGUAGE.ASSIGNED.VARIABLES"><LINK
+REL="PREVIOUS"
+TITLE="Variables"
+HREF="language.variables.html"><LINK
+REL="NEXT"
+TITLE="Array indexes"
+HREF="language.variables.array.indexes.html"></HEAD
+><BODY
+CLASS="SECT2"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Smarty - the compiling PHP template engine</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="language.variables.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="language.variables.array.indexes.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="LANGUAGE.VARIABLES.ASSOC.ARRAYS"
+>Associative arrays</A
+></H2
+><P
+>			You can also reference associative array variables that are
+			assigned from PHP by specifying the key after the '.' (period)
+			symbol.
+			</P
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN209"
+></A
+><P
+><B
+>Example 4-2. accessing associative array variables</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>index.php:
+
+$smarty = new Smarty;
+$smarty-&gt;assign('Contacts',
+    array('fax' =&#62; '555-222-9876',
+          'email' =&#62; 'zaphod@slartibartfast.com',
+          'phone' =&#62; array('home' =&#62; '555-444-3333',
+                           'cell' =&#62; '555-111-1234')));
+$smarty-&gt;display('index.tpl');
+
+index.tpl:
+
+{$Contacts.fax}&lt;br&gt;
+{$Contacts.email}&lt;br&gt;
+{* you can print arrays of arrays as well *}
+{$Contacts.phone.home}&lt;br&gt;
+{$Contacts.phone.cell}&lt;br&gt;
+
+OUTPUT:
+
+555-222-9876&lt;br&gt;
+zaphod@slartibartfast.com&lt;br&gt;
+555-444-3333&lt;br&gt;
+555-111-1234&lt;br&gt;</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="language.variables.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="language.variables.array.indexes.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Variables</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="language.variables.html#LANGUAGE.ASSIGNED.VARIABLES"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Array indexes</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

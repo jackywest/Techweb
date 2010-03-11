@@ -1,0 +1,244 @@
+<HTML
+><HEAD
+><TITLE
+>Tips &#38; Tricks</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+"><LINK
+REL="HOME"
+TITLE="Smarty - the compiling PHP template engine"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Appendixes"
+HREF="appendixes.html"><LINK
+REL="PREVIOUS"
+TITLE="Troubleshooting"
+HREF="troubleshooting.html"><LINK
+REL="NEXT"
+TITLE="Default Variable Handling"
+HREF="tips.default.var.handling.html"></HEAD
+><BODY
+CLASS="CHAPTER"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Smarty - the compiling PHP template engine</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="troubleshooting.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="tips.default.var.handling.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="CHAPTER"
+><H1
+><A
+NAME="TIPS"
+>Chapter 18. Tips &#38; Tricks</A
+></H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="tips.html#TIPS.BLANK.VAR.HANDLING"
+>Blank Variable Handling</A
+></DT
+><DT
+><A
+HREF="tips.default.var.handling.html"
+>Default Variable Handling</A
+></DT
+><DT
+><A
+HREF="tips.passing.vars.html"
+>Passing variable title to header template</A
+></DT
+><DT
+><A
+HREF="tips.dates.html"
+>Dates</A
+></DT
+><DT
+><A
+HREF="tips.wap.html"
+>WAP/WML</A
+></DT
+><DT
+><A
+HREF="tips.componentized.templates.html"
+>Componentized Templates</A
+></DT
+><DT
+><A
+HREF="tips.obfuscating.email.html"
+>Obfuscating E-mail Addresses</A
+></DT
+></DL
+></DIV
+><P
+>   </P
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="TIPS.BLANK.VAR.HANDLING"
+>Blank Variable Handling</A
+></H1
+><P
+>		There may be times when you want to print a default value for an empty
+		variable instead of printing nothing, such as printing "&amp;nbsp;" so that
+		table backgrounds work properly. Many would use an {if} statement to
+		handle this, but there is a shorthand way with Smarty, using the
+		<I
+CLASS="EMPHASIS"
+>default</I
+> variable modifier.
+		</P
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN3948"
+></A
+><P
+><B
+>Example 18-1. Printing &amp;nbsp; when a variable is empty</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&#13;{* the long way *}
+
+{if $title eq ""}
+	&amp;nbsp;
+{else}
+	{$title}
+{/if}
+
+
+{* the short way *}
+
+{$title|default:"&amp;nbsp;"}</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="troubleshooting.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="tips.default.var.handling.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Troubleshooting</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="appendixes.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Default Variable Handling</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

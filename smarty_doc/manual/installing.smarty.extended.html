@@ -1,0 +1,255 @@
+<HTML
+><HEAD
+><TITLE
+>Extended Setup</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+"><LINK
+REL="HOME"
+TITLE="Smarty - the compiling PHP template engine"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Installation"
+HREF="installation.html"><LINK
+REL="PREVIOUS"
+TITLE="Basic Installation"
+HREF="installing.smarty.basic.html"><LINK
+REL="NEXT"
+TITLE="Smarty For Template Designers"
+HREF="smarty.for.designers.html"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Smarty - the compiling PHP template engine</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="installing.smarty.basic.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 2. Installation</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="smarty.for.designers.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="INSTALLING.SMARTY.EXTENDED"
+>Extended Setup</A
+></H1
+><P
+>   This is a continuation of the <A
+HREF="installing.smarty.basic.html"
+>basic installation</A
+>, please read
+   that first!
+   </P
+><P
+>   A slightly more flexible way to setup Smarty is to extend the class and
+   initialize your Smarty environment. So instead of repeatedly setting
+   directory paths, assigning the same vars, etc., we can do that in one place.
+   Lets create a new directory "/php/includes/guestbook/" and make a new file
+   called "setup.php". In our example environment, "/php/includes" is in our
+   include_path. Be sure you set this up too, or use absolute file paths.
+   </P
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN139"
+></A
+><P
+><B
+>Example 2-10. Editing /php/includes/guestbook/setup.php</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>&#13;// load Smarty library
+require('Smarty.class.php');
+
+// The setup.php file is a good place to load
+// required application library files, and you
+// can do that right here. An example:
+// require('guestbook/guestbook.lib.php');
+
+class Smarty_GuestBook extends Smarty {
+
+   function Smarty_GuestBook() {
+   
+   		// Class Constructor. These automatically get set with each new instance.
+
+		$this-&#62;Smarty();
+
+		$this-&#62;template_dir = '/web/www.mydomain.com/smarty/guestbook/templates/';
+		$this-&#62;compile_dir = '/web/www.mydomain.com/smarty/guestbook/templates_c/';
+		$this-&#62;config_dir = '/web/www.mydomain.com/smarty/guestbook/configs/';
+		$this-&#62;cache_dir = '/web/www.mydomain.com/smarty/guestbook/cache/'; 
+		
+		$this-&#62;caching = true;
+		$this-&#62;assign('app_name','Guest Book');
+   }
+
+}</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+><P
+>  Now lets alter the index.php file to use setup.php:
+  </P
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN143"
+></A
+><P
+><B
+>Example 2-11. Editing /web/www.mydomain.com/docs/guestbook/index.php</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>&#13;require('guestbook/setup.php');
+
+$smarty = new Smarty_GuestBook;
+
+$smarty-&#62;assign('name','Ned');
+
+$smarty-&#62;display('index.tpl');</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+><P
+>  Now you see it is quite simple to bring up an instance of Smarty, just use
+  Smarty_GuestBook which automatically initializes everything for our application.
+  </P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="installing.smarty.basic.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="smarty.for.designers.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Basic Installation</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="installation.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Smarty For Template Designers</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>
